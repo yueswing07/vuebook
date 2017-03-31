@@ -7,6 +7,9 @@
       return {
         msg: 'Welcome to the Overview'
       }
+    },
+    created: () => {
+      /* Ensure user auth against firebase */
     }
   }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="fb_login">
     <button class="btn btn-primary btn-google" @click="loginToFirebase()">{{loginMessage}}</button>
+
   </div>
 </template>
 <script>
@@ -14,6 +15,7 @@
           fbHelper.loginWithGoogle()
           .then((loginResult) => {
             console.log(loginResult)
+            window.location.pathname = "/overview"
           })
           .catch((error) => {
             console.log(error)
