@@ -5,6 +5,7 @@
           {{username}}
           <firebaselogin @userLoggedIn="changeUserInfo"></firebaselogin>
           <overview :currentuser='currentUser'></overview>
+          <button @click='debugInfo'>Hit me</button>
       </div>
     </div>
   </div>
@@ -23,15 +24,19 @@
         methods: {
             changeUserInfo: function(args) {
                 console.log("test", args);
-                this.username = args.user.displayName;
+                this.currentUser.name = args.user.displayName;
+                this.currentUser.email = args.user.email;
+            },
+            debugInfo: function() {
+                console.log(this.currentUser);
             }
         },
 
         data() {
             return {
                 currentUser: {
-                    name: "Tobias",
-                    email: "tobias.stosius@gmail.com"
+                    name: "Hans Zimmer",
+                    email: "epicmusic@zimmer.com"
                 },
                 username: "Hans"
             }
