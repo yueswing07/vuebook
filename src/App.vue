@@ -4,8 +4,9 @@
       <div class="row">
           {{username}}
           <firebaselogin @userLoggedIn="changeUserInfo"></firebaselogin>
-          <overview :currentuser='currentUser'></overview>
-          <button @click='debugInfo'>Hit me</button>
+      </div>
+      <div v-if="validUser">
+        <overview :currentuser='currentUser'></overview>
       </div>
     </div>
   </div>
@@ -14,7 +15,6 @@
 <script>
     import firebaselogin from './components/FirebaseLogin'
     import overview from './components/Overview'
-
     export default {
         name: 'app',
         components: {
@@ -26,6 +26,7 @@
                 console.log("test", args);
                 this.currentUser.name = args.user.displayName;
                 this.currentUser.email = args.user.email;
+                this.validUser = true;
             },
             debugInfo: function() {
                 console.log(this.currentUser);
@@ -38,7 +39,8 @@
                     name: "Hans Zimmer",
                     email: "epicmusic@zimmer.com"
                 },
-                username: "Hans"
+                username: "Hans",
+                validUser: false
             }
         }
     }
