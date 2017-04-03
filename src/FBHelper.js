@@ -13,6 +13,10 @@ export default class FBHelper {
     }
     initializeFirebase() {
         firebase.initializeApp(this.config);
+        this.databaseRef = firebase.database().ref('/books');
+        this.databaseRef.once('value', function(data) {
+            console.log(data.val());
+        })
     }
     loginWithGoogle() {
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -26,4 +30,10 @@ export default class FBHelper {
                 })
         });
     }
+    getValuesFromDatabase() {
+        this.databaseRef.once('value', function(data) {
+            return data.val();
+        })
+    }
+
 }

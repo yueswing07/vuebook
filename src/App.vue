@@ -2,10 +2,10 @@
   <div id="app">
     <div class="container">
       <div class="row">
-          {{username}}
           <firebaselogin @userLoggedIn="changeUserInfo"></firebaselogin>
       </div>
-      <div v-if="validUser">
+      <!--<div v-if="validUser" class='row'>-->
+      <div class='row'>
         <overview :currentuser='currentUser'></overview>
       </div>
     </div>
@@ -32,7 +32,6 @@
                 console.log(this.currentUser);
             }
         },
-
         data() {
             return {
                 currentUser: {

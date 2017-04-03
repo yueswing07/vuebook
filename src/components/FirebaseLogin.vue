@@ -20,6 +20,7 @@
                 loginGoogle() {
                     fbHelper.loginWithGoogle()
                         .then((loginResult) => {
+                            console.log(fbHelper.getValuesFromDatabase());
                             this.$emit('userLoggedIn', loginResult);
                         })
                         .catch((error) => {
