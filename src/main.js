@@ -4,7 +4,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import App from './App'
-import Overview from './Overview'
 
 import Helper from './FBHelper'
 import VueFire from 'vuefire'
@@ -23,26 +22,23 @@ Vue.use(VueRouter);
 /*
   ROUTING
  */
-const NotFound = { template: '<p>Page not found</p>' }
 
-const routes = {
-  '/' : App,
-  '/overview' : Overview,
-}
-new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App },
-  data: {
-    currentRoute : window.location.pathname
-  },
-  computed: {
-    ViewComponent() {
-      return routes[this.currentRoute] || NotFound
-    }
-  },
-  render (h) { return h(this.ViewComponent)}
+const routes = [{
+    path: '/',
+    component: App
+}]
+const router = new VueRouter({
+    routes
 })
+
+/*
+  Init main application
+*/
+const application = new Vue({
+    el: '#app',
+    template: '<App/>',
+    components: { App },
+}).$mount('#app');
 
 
 // firebase.child('notes').set([

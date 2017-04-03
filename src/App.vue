@@ -1,30 +1,44 @@
 <template>
   <div id="app">
-    <div class="container-fluid">
+    <div class="container">
       <div class="row">
-        <div class="col-xs-12">
-        {{msg}}
-          <firebaselogin></firebaselogin>
-        </div>
+          {{username}}
+          <firebaselogin @userLoggedIn="changeUserInfo"></firebaselogin>
+          <overview :currentuser='currentUser'></overview>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import firebaselogin from './components/FirebaseLogin'
-  export default {
-    name: 'app',
-    components: {
-      firebaselogin
-    },
-    data: ()=> {
-      return {
-        msg: 'Welcome to Your Vue.js App'
-      }
-    }
-  }
+    import firebaselogin from './components/FirebaseLogin'
+    import overview from './components/Overview'
 
+    export default {
+        name: 'app',
+        components: {
+            firebaselogin,
+            overview
+        },
+        methods: {
+            changeUserInfo: function(args) {
+                console.log("test", args);
+                this.username = args.user.displayName;
+            }
+        },
+
+        data() {
+            return {
+                currentUser: {
+                    name: "Tobias",
+                    email: "tobias.stosius@gmail.com"
+                },
+                username: "Hans"
+            }
+        }
+    }
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
