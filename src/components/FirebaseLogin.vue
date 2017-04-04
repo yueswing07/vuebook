@@ -20,8 +20,10 @@
                 loginGoogle() {
                     fbHelper.loginWithGoogle()
                         .then((loginResult) => {
-                            console.log(fbHelper.getValuesFromDatabase());
-                            this.$emit('userLoggedIn', loginResult);
+                            fbHelper.getValuesFromDatabase('/Ha2CEyuU7sfbajWPLOtzO6K9aCw1').then((data) => {
+                              loginResult.database = data;
+                              this.$emit('userLoggedIn', loginResult);
+                            })
                         })
                         .catch((error) => {
                             console.log(error)
@@ -39,22 +41,22 @@
     .fb_login {
         border: 1px solid black;
     }
-    
+
     .fb_login button {
         margin-bottom: 20px;
     }
-    
+
     .fb_login button.btn.btn-google {
         border: none;
         border-radius: 0;
     }
-    
+
     .fb_login button.btn.btn-github {
         border: none;
         border-radius: 0;
         background-color: #25e78b;
     }
-    
+
     .fb_login button.btn.btn-github:hover {
         border: none;
         border-radius: 0;
