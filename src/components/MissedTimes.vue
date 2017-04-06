@@ -1,13 +1,14 @@
 <template>
   <div class="overview-container">
     <h2>Fehlzeiten</h2>
-    <h5>Username</h5>
-    <h5>E-Mail</h5>
+    <h5>Username: {{currentuser.displayName}}</h5>
+    <h5>E-Mail {{currentuser.email}}</h5>
   </div>
 </template>
 
 <script>
     var userObject;
+    import awesome from '../awesomeDebug.js'
     export default {
         props: [
             'currentuser'
@@ -21,7 +22,7 @@
             }
         },
         created(){
-          console.log("==MissedTimes.vue==");
+          awesome.debug('info','MissedTimes','Current user', this.currentuser)
         }
     }
 </script>
