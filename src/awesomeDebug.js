@@ -52,9 +52,9 @@ export default class Awesome{
      * http://stackoverflow.com/questions/7505623/colors-in-javascript-console
      */
     if(!object){
-      console.log("%c%s%c%s%c%s%c%s",style_level,this.level,style_classname,classname||"",style_time,messageTime,style_message,message)
+      console.log("%c%s%c%s%c%s%c %s",style_level,this.level,style_classname,classname||"",style_time,messageTime,style_message,message)
     } else {
-      console.log("%c%s%c%s%c%s%c%s",style_level,this.level,style_classname,classname||"",style_time,messageTime,style_message,message,"",object)
+      console.log("%c%s%c%s%c%s%c %s",style_level,this.level,style_classname,classname||"",style_time,messageTime,style_message,message,"",object)
     }
 
     // console.log("%cExample %s", css, 'all code runs happy');

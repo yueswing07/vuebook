@@ -1,8 +1,8 @@
 <template>
   <div class="overview-container">
     <h2>Fehlzeiten</h2>
-    <h5>Username: {{currentuser.getName()}}</h5>
-    <h5>E-Mail: {{currentuser.getEmail()}}</h5>
+    <h5>Username</h5>
+    <h5>E-Mail</h5>
   </div>
 </template>
 

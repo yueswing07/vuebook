@@ -3,24 +3,18 @@
     <input type='button' class='btn btn-danger' value='Schreibe Fehlzeiten' @click='setMissingTimes()' style='width: 200px; height: 75px;margin: 10px;'>
     <div class='container'>
       <div class='row'>
-        <div v-if='user'>
-          <button class='btn btn-danger' @click='logout()'>Logout</button>
-          <div class='row'>
-            <overview :currentuser='user'></overview>
-          </div>
-          <div class='row'>
-            <missedtimes :currentuser='user'></missedtimes>
-          </div>
+        <button class='btn btn-danger' @click='logout()'>Logout</button>
+        <div class='row'>
+          <overview :currentuser='this.user'></overview>
         </div>
-        <div v-else>
-          <firebaselogin @userLoggedIn='userLogin'></firebaselogin>
+        <div class='row'>
+          <missedtimes :currentuser='this.user'></missedtimes>
         </div>
       </div>
+      <firebaselogin></firebaselogin>
     </div>
   </div>
 </template>
-
-
 
 
 <script>
@@ -29,8 +23,11 @@
   import missedtimes from './components/MissedTimes.vue'
   import Helper from './FBHelper.js'
   import User from './User.js'
+  import awesome from './awesomeDebug.js'
+  import firebase from 'firebase';
 
-  var user = false
+  var fbhelper = new Helper();
+  var user = ""
 
   export default {
     name: 'app',
@@ -40,11 +37,7 @@
       missedtimes
     },
     methods: {
-      userLogin: function (args) {
-        this.user = new User(args.user.displayName, args.user.email, args.user.uid)
-      },
       logout: function () {
-        var fbhelper = new Helper();
         fbhelper.signOutUser()
       },
       setMissingTimes: function(da){
@@ -53,13 +46,22 @@
     },
     data() {
       return {
-        user,
+        user
       }
     },
     created(){
       // Valid after page refresh
-      var fbhelper = new Helper()
-      console.log("Current user", fbhelper.getCurrentUser());
+      firebase.auth().onAuthStateChanged((user) => {
+        if(user){
+          this.user = user
+          awesome.debug('info', 'App.vue', 'Auth state changed',this.user);
+        } else {
+          awesome.debug('info','App.vue','User logged out')
+          this.user = ""
+        }
+
+
+      })
     }
   }
 

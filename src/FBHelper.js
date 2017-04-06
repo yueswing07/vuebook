@@ -12,40 +12,36 @@ export default class FBHelper {
     messagingSenderId: "292608763584"
   };
   currentUser = null;
-  classname = "FBHelper"
 
   constructor() {
-    awesome.debug("info",this.classname,"== Firebase Construct==")
+    awesome.debug('info', 'FBHelper.js', '==Firebase Construct==');
   }
   initializeFirebase() {
     firebase.initializeApp(this.config);
     this.databaseRef = firebase.database().ref('/books');
-    firebase.auth().onAuthStateChanged((user) => {
-      awesome.debug("info",this.classname,"FirebaseHelperInit", user)
-      this.currentUser = new User()
-    })
   }
-  loginToApplication(selectedProvider){
+  loginToApplication(selectedProvider) {
     switch (selectedProvider) {
       case 'google':
         var provider = new firebase.auth.GoogleAuthProvider();
-        firebase.auth().signInWithPopup(provider)
-        .then((newUser) => {
-          console.log("Sucessfully logged in with Google")
-        })
-        .catch((error) => {
-          reject(error)
-        })
         break;
-    case 'github':
-      alert("Not implemented yet")
-      break;
-
+      case 'github':
+        var provider = new firebase.auth.GithubAuthProvider();
+        break;
       default:
-      alert("Something went wrong")
+        alert("Something went wrong")
         break;
     }
+    firebase.auth().signInWithPopup(provider)
+      .then((newUser) => {
+        // New user will be set using the observer in 'initializeFirebase'
+        awesome.debug('info', 'FBHelper.js', 'Logged in with Google');
+      })
+      .catch((error) => {
+        awesome.debug('servere', 'FBHelper.js', 'Error on login', error);
+      })
   }
+
   getValuesFromDatabase(refString) {
     return new Promise((resolve, reject) => {
       firebase.database().ref(refString).once('value')
@@ -62,7 +58,7 @@ export default class FBHelper {
     firebase.auth().signOut()
   }
   getCurrentUser(){
-    return firebase.auth().currentUser
+    return this.currentUser
   }
 
   /**

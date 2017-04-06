@@ -1,12 +1,13 @@
 <template>
   <div class="overview-container">
     <h2>Current User data</h2>
-    <h5>Username: {{currentuser.getName()}}</h5>
-    <h5>E-Mail: {{currentuser.getEmail()}}</h5>
+    <h5>Username: {{currentuser.displayName}}</h5>
+    <h5>E-Mail: {{currentuser.email}}</h5>
   </div>
 </template>
 
 <script>
+    import awesome from '../awesomeDebug.js'
     var userObject;
     export default {
         props: [
@@ -21,7 +22,7 @@
             }
         },
         created(){
-
+          awesome.debug('info','Overview','User',this.currentuser)
         }
     }
 </script>
