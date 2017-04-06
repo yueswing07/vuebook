@@ -3,8 +3,8 @@
     <h2>Anmelden am Digitalen Klassenbuch</h2>
     <p>Sie können sich über die folgenden Anmeldemethoden an der Applikation anmelden.</p>
     <p>Sollten sie keinen Account haben, wird automatisch einer für Sie generiert.</p>
-    <button class="btn btn-primary btn-google" @click="loginGoogle()">Anmelden mit Google</button>
-    <button class="btn btn-primary btn-github" @click="loginGithub()">Anmelden mit Github</button>
+    <button class="btn btn-primary btn-google" @click="login('google')">Anmelden mit Google</button>
+    <button class="btn btn-primary btn-github" @click="login('github')">Anmelden mit Github</button>
   </div>
 
   </div>
@@ -17,20 +17,8 @@
         data() {
             return {
                 loginMessage: "Login using Google",
-                loginGoogle() {
-                    fbHelper.loginWithGoogle()
-                        .then((loginResult) => {
-                            fbHelper.getValuesFromDatabase('/Ha2CEyuU7sfbajWPLOtzO6K9aCw1').then((data) => {
-                              loginResult.database = data;
-                              this.$emit('userLoggedIn', loginResult);
-                            })
-                        })
-                        .catch((error) => {
-                            console.log(error)
-                        })
-                },
-                loginGithub() {
-                    alert("Not implemented yet");
+                login(provider){
+                  fbHelper.loginToApplication(provider)
                 }
             }
         }

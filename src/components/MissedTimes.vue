@@ -1,6 +1,6 @@
 <template>
   <div class="overview-container">
-    <h2>Current User data</h2>
+    <h2>Fehlzeiten</h2>
     <h5>Username: {{currentuser.getName()}}</h5>
     <h5>E-Mail: {{currentuser.getEmail()}}</h5>
   </div>
@@ -21,7 +21,7 @@
             }
         },
         created(){
-
+          console.log("==MissedTimes.vue==");
         }
     }
 </script>

@@ -1,57 +1,65 @@
 <template>
-  <div id="app">
-    <div class="container">
-      <div class="row">
-        <firebaselogin @userLoggedIn="changeUserInfo"></firebaselogin>
-      </div>
-      <!--<div v-if="validUser" class='row'>-->
+  <div id='app'>
+    <input type='button' class='btn btn-danger' value='Schreibe Fehlzeiten' @click='setMissingTimes()' style='width: 200px; height: 75px;margin: 10px;'>
+    <div class='container'>
       <div class='row'>
-        <overview :currentuser='currentUser'></overview>
-        <ul id="example-1">
-          <li v-for="item in currentUser.database">
-            {{ item }}
-          </li>
-        </ul>
-        <p>User: {{currentUser}} </p>
-        <p>Userinfo: {{currentUser.database}} </p>
+        <div v-if='user'>
+          <button class='btn btn-danger' @click='logout()'>Logout</button>
+          <div class='row'>
+            <overview :currentuser='user'></overview>
+          </div>
+          <div class='row'>
+            <missedtimes :currentuser='user'></missedtimes>
+          </div>
+        </div>
+        <div v-else>
+          <firebaselogin @userLoggedIn='userLogin'></firebaselogin>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
+
+
+
 <script>
   import firebaselogin from './components/FirebaseLogin'
   import overview from './components/Overview'
+  import missedtimes from './components/MissedTimes.vue'
+  import Helper from './FBHelper.js'
+  import User from './User.js'
+
+  var user = false
+
   export default {
     name: 'app',
     components: {
       firebaselogin,
-      overview
+      overview,
+      missedtimes
     },
     methods: {
-      changeUserInfo: function (args) {
-        this.currentUser.name = args.user.displayName;
-        this.currentUser.email = args.user.email;
-        this.currentUser.database = args.database;
-        this.currentUser.valid = args.debug;
-        this.validUser = true;
-        console.log("User loging result: ", this.currentUser)
-        console.log("Return: ", args)
+      userLogin: function (args) {
+        this.user = new User(args.user.displayName, args.user.email, args.user.uid)
       },
-      debugInfo: function () {
-        console.log(this.currentUser);
+      logout: function () {
+        var fbhelper = new Helper();
+        fbhelper.signOutUser()
+      },
+      setMissingTimes: function(da){
+
       }
     },
     data() {
       return {
-        currentUser: {
-          name: "Hans Zimmer",
-          email: "epicmusic@zimmer.com",
-          database: {
-            test: "wert"
-          }
-        },
+        user,
       }
+    },
+    created(){
+      // Valid after page refresh
+      var fbhelper = new Helper()
+      console.log("Current user", fbhelper.getCurrentUser());
     }
   }
 
