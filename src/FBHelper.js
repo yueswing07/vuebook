@@ -1,7 +1,5 @@
 import firebase from 'firebase';
-import User from './User';
 import awesome from './awesomeDebug'
-
 
 export default class FBHelper {
   config = {

@@ -4,16 +4,19 @@
     <div class='container'>
       <div class='row'>
         <button class='btn btn-danger' @click='logout()'>Logout</button>
-        <div class='row'>
-          <overview :currentuser='this.user'></overview>
-        </div>
-        <div class='row'>
-          <missedtimes :currentuser='this.user'></missedtimes>
-        </div>
       </div>
-      <firebaselogin></firebaselogin>
-    </div>
+      <div class='row'>
+        <overview :currentuser='user'></overview>
+      </div>
+      <div class='row'>
+        <missedtimes :currentuser='user'></missedtimes>
+      </div>
+      <div class="row">
+        <firebaselogin></firebaselogin>
+      </div>
+    </div>    
   </div>
+</div>
 </template>
 
 
@@ -44,6 +47,11 @@
 
       }
     },
+    watch: {
+      user: function(){
+        awesome.debug('debug','App.vue','Current user change detected')
+      }
+    },
     data() {
       return {
         user
@@ -51,13 +59,12 @@
     },
     created(){
       // Valid after page refresh
-      firebase.auth().onAuthStateChanged((user) => {
-        if(user){
-          this.user = user
-          awesome.debug('info', 'App.vue', 'Auth state changed',this.user);
+      firebase.auth().onAuthStateChanged((newUser) => {
+        if(newUser){
+          this.user = newUser
         } else {
           awesome.debug('info','App.vue','User logged out')
-          this.user = ""
+          user = ""
         }
 
 
