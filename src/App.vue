@@ -1,18 +1,17 @@
 <template>
   <div id='app'>
-    <input type='button' class='btn btn-danger' value='Schreibe Fehlzeiten' @click='setMissingTimes()' style='width: 200px; height: 75px;margin: 10px;'>
-    <div class='container'>
-      <div class='row'>
-        <button class='btn btn-danger' @click='logout()'>Logout</button>
+    <div class='container-fluid'>
+      <div class="row">        
+        <button class='btn btn-danger' @click='logout()' v-if='user.loggedin'>Logout</button>
+        <firebaselogin v-else></firebaselogin>
       </div>
       <div class='row'>
         <overview :currentuser='user'></overview>
       </div>
       <div class='row'>
-        <missedtimes :currentuser='user'></missedtimes>
-      </div>
-      <div class="row">
-        <firebaselogin></firebaselogin>
+        <div class="col-md-12">
+          <missedtimes :currentuser='user'></missedtimes>
+        </div>
       </div>
     </div>    
   </div>
@@ -62,9 +61,10 @@
       firebase.auth().onAuthStateChanged((newUser) => {
         if(newUser){
           this.user = newUser
+          this.user.loggedin = true;
         } else {
           awesome.debug('info','App.vue','User logged out')
-          user = ""
+          this.user = false;
         }
       })
     }

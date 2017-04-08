@@ -1,17 +1,14 @@
 <template>
   <div class="overview-container">
     <h2>Fehlzeiten</h2>
-    <h5>Username: {{currentuser.displayName}}</h5>
-    <h5>E-Mail {{currentuser.email}}</h5>
-    <h5>{{message}}</h5>
-    <ul>
-      <li v-for='fehlzeit in databaseValue'>
+    <select class='missing-times-list'>
+      <option v-for='fehlzeit in databaseValue' class='list-item'>
         <p>Datum: {{fehlzeit.date}}</p>
         <p>Dauer: {{fehlzeit.duration}}</p>
         <p>Stunde: {{fehlzeit.lesson}}</p>
         <p>Status: {{fehlzeit.status}}</p>
-      </li>
-    </ul>
+      </option>
+    </select>
   </div>
 </template>
 
@@ -55,7 +52,13 @@
 </script>
 
 <style scoped>
-    .overview-container {
-        border: 1px solid red;
+    .missing-times-list{
+        max-height: 150px;
+        overflow-y: scroll;
+        list-style: none;
+        padding-left: 0;
+    }
+    .list-item:nth-child(odd){
+        background-color: #b9b8b8;
     }
 </style>

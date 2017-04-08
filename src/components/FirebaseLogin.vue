@@ -26,10 +26,6 @@
 </script>
 
 <style scoped>
-    .fb_login {
-        border: 1px solid black;
-    }
-
     .fb_login button {
         margin-bottom: 20px;
     }
