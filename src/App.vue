@@ -66,8 +66,6 @@
           awesome.debug('info','App.vue','User logged out')
           user = ""
         }
-
-
       })
     }
   }

@@ -40,18 +40,6 @@ export default class FBHelper {
       })
   }
 
-  getValuesFromDatabase(refString) {
-    return new Promise((resolve, reject) => {
-      firebase.database().ref(refString).once('value')
-        .then(function (data) {
-          resolve(data.val());
-          // return data.val();
-        })
-        .catch(function (error){
-          reject(error);
-        })
-    })
-  }
   signOutUser(){
     firebase.auth().signOut()
   }

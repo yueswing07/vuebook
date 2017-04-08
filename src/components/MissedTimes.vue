@@ -3,6 +3,15 @@
     <h2>Fehlzeiten</h2>
     <h5>Username: {{currentuser.displayName}}</h5>
     <h5>E-Mail {{currentuser.email}}</h5>
+    <h5>{{message}}</h5>
+    <ul>
+      <li v-for='fehlzeit in databaseValue'>
+        <p>Datum: {{fehlzeit.date}}</p>
+        <p>Dauer: {{fehlzeit.duration}}</p>
+        <p>Stunde: {{fehlzeit.lesson}}</p>
+        <p>Status: {{fehlzeit.status}}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -16,23 +25,31 @@
             'currentuser'
         ],
         methods: {
+          subscribeToDatabase: function(refString){
+            var that = this
+              firebase.database().ref(refString).on('value', function(snapshot){
+                awesome.debug('debug','FBHelper.js','Database promise',snapshot.val())
+                that.databaseValue = snapshot.val()
+            })
+          }
         },
         watch:{
             currentuser: function(){
-                awesome.debug('debug','MissedTimes.vue','Current user change detected',this.currentuser.uid)
-                firebase.database().ref('debug/'+this.currentuser.uid+'/fehlzeiten/').once('value')
-                .then( function(snapshot){
-                    awesome.debug('debug','MissedTimes.vue','Database value',snapshot.val())
-                })
-
+                if (this.currentuser.uid !== 'undefined') {
+                  this.subscribeToDatabase('debug/'+this.currentuser.uid+'/fehlzeiten/')
+                }
+            },
+            databaseValue: function(){
+              awesome.debug('debug','MissedTimes.vue','Databasevalue has updated')
             }
         },
         data() {
             return {
                 message: '',
+                databaseValue: ''
             }
         },
-        created(){          
+        created(){
         }
     }
 </script>

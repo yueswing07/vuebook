@@ -22,7 +22,6 @@
             }
         },
         created(){
-          awesome.debug('info','Overview','User',this.currentuser)
         }
     }
 </script>

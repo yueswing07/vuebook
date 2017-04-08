@@ -7,7 +7,7 @@ import App from './App'
 
 import Helper from './FBHelper'
 import VueFire from 'vuefire'
-
+import awesome from './awesomeDebug.js'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -39,13 +39,3 @@ const application = new Vue({
     template: '<App/>',
     components: { App },
 }).$mount('#app');
-
-
-// firebase.child('notes').set([
-//   {title: 'Hello world', content: 'Lorem ipsum'}
-// ])
-// firebase.child('notes').on('value', (snapshot) => {
-//   let notes = snapshot.val()
-//   console.log(notes)
-//   window.alert(notes[0].title)
-// })
