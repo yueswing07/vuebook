@@ -22,22 +22,18 @@
             'currentuser'
         ],
         methods: {
-          subscribeToDatabase: function(refString){
-            var that = this
-              firebase.database().ref(refString).on('value', function(snapshot){
-                awesome.debug('debug','FBHelper.js','Database promise',snapshot.val())
-                that.databaseValue = snapshot.val()
-            })
+          subscribeToDatabase: function(refString){            
           }
         },
         watch:{
             currentuser: function(){
                 if (this.currentuser.uid !== 'undefined') {
-                  this.subscribeToDatabase('debug/'+this.currentuser.uid+'/fehlzeiten/')
+                    var that = this
+                    firebase.database().ref('debug/'+this.currentuser.uid+'/fehlzeiten/').on('value', function(snapshot){
+                        awesome.debug('debug','FBHelper.js','Database promise',snapshot.val())
+                        that.databaseValue = snapshot.val()
+                    })
                 }
-            },
-            databaseValue: function(){
-              awesome.debug('debug','MissedTimes.vue','Databasevalue has updated')
             }
         },
         data() {

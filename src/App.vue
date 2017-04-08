@@ -2,7 +2,7 @@
   <div id='app'>
     <div class='container-fluid'>
       <div class="row">        
-        <button class='btn btn-danger' @click='logout()' v-if='user.loggedin'>Logout</button>
+        <button class='btn btn-danger' @click='logout()' v-if='loggedIn == true'>Logout</button>
         <firebaselogin v-else></firebaselogin>
       </div>
       <div class='row'>
@@ -30,6 +30,7 @@
 
   var fbhelper = new Helper();
   var user = ""
+  var loggedIn = false
 
   export default {
     name: 'app',
@@ -53,7 +54,8 @@
     },
     data() {
       return {
-        user
+        user,
+        loggedIn: false
       }
     },
     created(){
@@ -61,10 +63,11 @@
       firebase.auth().onAuthStateChanged((newUser) => {
         if(newUser){
           this.user = newUser
-          this.user.loggedin = true;
+          this.loggedIn = true
         } else {
           awesome.debug('info','App.vue','User logged out')
-          this.user = false;
+          this.user = false
+          this.loggedIn = false
         }
       })
     }
