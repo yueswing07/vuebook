@@ -13,6 +13,11 @@
           <missedtimes :currentuser='user'></missedtimes>
         </div>
       </div>
+      <div class='row'>
+        <div class="col-md-12">
+          <personalevents :currentuser='user'></personalevents>
+        </div>
+      </div>
     </div>    
   </div>
 </div>
@@ -20,9 +25,10 @@
 
 
 <script>
-  import firebaselogin from './components/FirebaseLogin'
   import overview from './components/Overview'
   import missedtimes from './components/MissedTimes.vue'
+  import personalevents from './components/EventList'
+  import firebaselogin from './components/FirebaseLogin'
   import Helper from './FBHelper.js'
   import User from './User.js'
   import awesome from './awesomeDebug.js'
@@ -37,7 +43,8 @@
     components: {
       firebaselogin,
       overview,
-      missedtimes
+      missedtimes,
+      personalevents
     },
     methods: {
       logout: function () {
