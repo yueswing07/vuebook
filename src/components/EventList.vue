@@ -1,14 +1,31 @@
 <template>
   <div class="overview-container">
     <h2>Events</h2>
-    <select class='missing-times-list'>
+    <select class='event-times-list'>
       <option v-for='personalevent in databaseValue' class='list-item'>
         <p>Datum: {{personalevent.date}}</p>
         <p>Beschreibung: {{personalevent.description}}</p>
-        <p>Info: {{personalevent.info}}</p>
-        <p>Zeit: {{personalevent.time}}</p>
+        <p>Zeit: {{personalevent.duration}}</p>
       </option>
     </select>
+    <div class="row">
+        <input type="date" v-model='personalEvent_date'>
+        <input type="time" v-model='personalEvent_duration'>
+        <select name="" id="" v-model='personalEvent_lesson'>
+            <option v-for='n in 12'> Stunde {{n}}</option>
+        </select>
+        <input type="text" v-model='personalEvent_description'>
+        <input type="button" class='btn btn-primary' value='Event eintragen' @click='createpersonalEvent()'>
+    </div>
+    <div class="row">
+        <h2>Output</h2>                
+    </div>
+    <div class="row">
+        Date: {{personalEvent_date}}
+        Duration: {{personalEvent_duration}}
+        Lesson: {{personalEvent_lesson}}
+        Description: {{personalEvent_description}}
+    </div>
   </div>
 </template>
 
@@ -23,6 +40,16 @@
         ],
         methods: {
           subscribeToDatabase: function(refString){            
+          },
+          createpersonalEvent: function(){
+              this.newpersonalEvent = {
+                  date: this.personalEvent_date,
+                  duration: this.personalEvent_duration,
+                  lesson: this.personalEvent_lesson,
+                  description: this.personalEvent_description,
+              }
+              awesome.debug('info','EventList.vue','Create personal event',this.newpersonalEvent)
+              firebase.database().ref('debug/'+this.currentuser.uid+'/personalevent/'+new Date().getTime()+'/').set(this.newpersonalEvent)
           }
         },
         watch:{
@@ -39,7 +66,12 @@
         data() {
             return {
                 message: '',
-                databaseValue: ''
+                databaseValue: '',
+                personalEvent_date: '',
+                personalEvent_duration: '',
+                personalEvent_lesson: '',
+                personalEvent_description: '',
+                personalEvent_status: ''
             }
         },
         created(){
