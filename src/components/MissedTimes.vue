@@ -70,7 +70,7 @@
             currentuser: function(){
                 if (this.currentuser.uid !== 'undefined') {
                     var that = this
-                    firebase.database().ref('debug/'+this.currentuser.uid+'/fehlzeiten/').on('value', (snapshot) => {
+                    firebase.database().ref('users/'+this.currentuser.uid+'/missingtimes/').on('value', (snapshot) => {
                         awesome.debug('servere','MissedTimes.js','Change ref from "debug" to "user"')
                         that.databaseValue = snapshot.val()
                     })

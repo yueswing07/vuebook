@@ -56,7 +56,7 @@
             currentuser: function(){
                 if (this.currentuser.uid !== 'undefined') {
                     var that = this
-                    firebase.database().ref('debug/'+this.currentuser.uid+'/personalevent/').on('value', function(snapshot){
+                    firebase.database().ref('users/'+this.currentuser.uid+'/events/').on('value', function(snapshot){
                         awesome.debug('servere','Eventlist.js','Change ref from "debug" to "user"')
                         that.databaseValue = snapshot.val()
                     })
