@@ -4,8 +4,8 @@
         <h2>Fehlzeiten</h2>
     </div>
     <div class="row">        
-        <select class='missing-times-list'>
-            <option v-for='fehlzeit in databaseValue' class='list-item'>
+        <select class='missing-times-list' v-model='selectedMissingTime'>
+            <option v-for='fehlzeit in databaseValue' class='list-item' v-bind:value='{ activeMissingTime:fehlzeit}'>
                 <p>Datum: {{fehlzeit.date}}</p>
                 <p>Dauer: {{fehlzeit.duration}}</p>
                 <p>Stunde: {{fehlzeit.lesson}}</p>
@@ -24,15 +24,7 @@
             <option v-for='excuse in excuses' v-if='excuse'>{{excuse}}</option>
         </select>
         <input type="button" class='btn btn-primary' value='Entschuldigung eintragen' @click='createMissingTime()'>
-    </div>
-    <div class="row">
-        <h2>Output</h2>                
-    </div>
-    <div class="row">
-        Date: {{missingtime_date}}
-        Duration: {{missingtime_duration}}
-        Lesson: {{missingtime_lesson}}
-        Description: {{missingtime_description}}
+        <input type="button" class='btn btn-info' value='Entschuldigung bearbeiten' @click='editMissingTime()'>
     </div>
   </div>
 </template>
@@ -49,21 +41,28 @@
         methods: {
           subscribeToDatabase: function(refString){            
           },
-          createMissingTime: function(){
-              if (this.missingtime_description === 'Ausstehend'){
-                  this.missingtime_status = 'pending'
-              } else {
-                  this.missingtime_status = 'approved'
+          createMissingTime: function(timestamp){
+              if ( !timestamp ){
+                timestamp = new Date().getTime()
               }
+              
               this.newMissingTime = {
                   date: this.missingtime_date,
                   duration: this.missingtime_duration,
                   lesson: this.missingtime_lesson,
                   description: this.missingtime_description,
-                  status: this.missingtime_status
+                  status: 'pending',                  
+                  uid: timestamp
               }
               awesome.debug('info','MissedTimes.vue','Create missing time',this.newMissingTime)
-              firebase.database().ref('debug/'+this.currentuser.uid+'/fehlzeiten/'+new Date().getTime()+'/').set(this.newMissingTime)
+              firebase.database().ref('users/'+this.currentuser.uid+'/missingtimes/'+timestamp+'/').set(this.newMissingTime)
+          },
+          updateeditableMissingTime : function() {
+
+
+          },
+          editMissingTime: function() {
+            this.createMissingTime(this.missingtime_uid)
           }
         },
         watch:{
@@ -71,7 +70,6 @@
                 if (this.currentuser.uid !== 'undefined') {
                     var that = this
                     firebase.database().ref('users/'+this.currentuser.uid+'/missingtimes/').on('value', (snapshot) => {
-                        awesome.debug('servere','MissedTimes.js','Change ref from "debug" to "user"')
                         that.databaseValue = snapshot.val()
                     })
                     firebase.database().ref('resources/excuses/').on('value', (snapshot) => {
@@ -79,6 +77,15 @@
                         that.excuses = snapshot.val()
                     })
                 }
+            },
+            selectedMissingTime: function(){
+                awesome.debug('debug','MissedTimes.vue','Missing Time select change',this.selectedMissingTime)
+                this.missingtime_date = this.selectedMissingTime.activeMissingTime.date
+                this.missingtime_duration = this.selectedMissingTime.activeMissingTime.duration
+                this.missingtime_lesson = this.selectedMissingTime.activeMissingTime.lesson
+                this.missingtime_description = this.selectedMissingTime.activeMissingTime.description
+                this.missingtime_uid = this.selectedMissingTime.activeMissingTime.uid
+                awesome.debug('debug','MissedTimes.vue','Select Time UID',this.selectedMissingTime.activeMissingTime.uid)
             }
         },
         data() {
@@ -89,10 +96,13 @@
                 missingtime_duration: '',
                 missingtime_lesson: '',
                 missingtime_description: '',
-                missingtime_status: ''
+                missingtime_status: '',
+                missingTime_uid: '',
+                selectedMissingTime: ''                
             }
         },
         created(){
+            
         }
     }
 </script>
