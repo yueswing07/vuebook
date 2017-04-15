@@ -1,13 +1,17 @@
 <template>
-  <div class="overview-container">
-    <h2>Events</h2>
-    <select class='event-times-list'>
-      <option v-for='personalevent in databaseValue' class='list-item'>
-        <p>Datum: {{personalevent.date}}</p>
-        <p>Beschreibung: {{personalevent.description}}</p>
-        <p>Zeit: {{personalevent.duration}}</p>
-      </option>
-    </select>
+  <div class="overview-container container">
+    <div class="row">
+        <h2>Events</h2>
+    </div>    
+    <div class="row">
+        <select class='event-times-list' v-model='selectedPersonalEvent'>
+            <option v-for='personalevent in databaseValue' class='list-item' v-bind:value='{ activePersonalEvent:personalevent }'>
+                <p>Datum: {{personalevent.date}}</p>
+                <p>Beschreibung: {{personalevent.description}}</p>
+                <p>Zeit: {{personalevent.duration}}</p>
+            </option>
+        </select>
+    </div>
     <div class="row">
         <input type="date" v-model='personalEvent_date'>
         <input type="time" v-model='personalEvent_duration'>
@@ -16,15 +20,7 @@
         </select>
         <input type="text" v-model='personalEvent_description'>
         <input type="button" class='btn btn-primary' value='Event eintragen' @click='createpersonalEvent()'>
-    </div>
-    <div class="row">
-        <h2>Output</h2>                
-    </div>
-    <div class="row">
-        Date: {{personalEvent_date}}
-        Duration: {{personalEvent_duration}}
-        Lesson: {{personalEvent_lesson}}
-        Description: {{personalEvent_description}}
+        <input type="button" class='btn btn-info' value='Event bearbeiten' @click='editpersonalevent()'>
     </div>
   </div>
 </template>
@@ -41,17 +37,24 @@
         methods: {
           subscribeToDatabase: function(refString){            
           },
-          createpersonalEvent: function(){
+          createpersonalEvent: function(timestamp){
+              if (!timestamp){
+                  timestamp = new Date().getTime()
+              }
               this.newpersonalEvent = {
                   date: this.personalEvent_date,
                   duration: this.personalEvent_duration,
                   lesson: this.personalEvent_lesson,
                   description: this.personalEvent_description,
+                  uid: timestamp
               }
               awesome.debug('info','EventList.vue','Create personal event',this.newpersonalEvent)
-              firebase.database().ref('debug/'+this.currentuser.uid+'/personalevent/'+new Date().getTime()+'/').set(this.newpersonalEvent)
-          }
-        },
+              firebase.database().ref('users/'+this.currentuser.uid+'/events/'+timestamp+'/').set(this.newpersonalEvent)
+          },
+            editpersonalevent: function(){
+                this.createpersonalEvent(this.personalEvent_uid)
+            },
+        },        
         watch:{
             currentuser: function(){
                 if (this.currentuser.uid !== 'undefined') {
@@ -61,8 +64,16 @@
                         that.databaseValue = snapshot.val()
                     })
                 }
-            }
-        },
+            },
+            selectedPersonalEvent: function() {
+                this.personalEvent_date = this.selectedPersonalEvent.activePersonalEvent.date
+                this.personalEvent_duration = this.selectedPersonalEvent.activePersonalEvent.duration
+                this.personalEvent_lesson = this.selectedPersonalEvent.activePersonalEvent.lesson
+                this.personalEvent_description = this.selectedPersonalEvent.activePersonalEvent.description
+                this.personalEvent_uid = this.selectedPersonalEvent.activePersonalEvent.uid
+                awesome.debug('debug','EventList.vue','Currently active event',this.selectedPersonalEvent.activePersonalEvent)
+            },
+        },        
         data() {
             return {
                 message: '',
@@ -71,7 +82,9 @@
                 personalEvent_duration: '',
                 personalEvent_lesson: '',
                 personalEvent_description: '',
-                personalEvent_status: ''
+                personalEvent_status: '',
+                personalEvent_uid: '',
+                selectedPersonalEvent: ''
             }
         },
         created(){
