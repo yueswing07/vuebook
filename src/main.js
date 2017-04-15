@@ -5,10 +5,6 @@ import Vuex from 'Vuex'
 import VueRouter from 'vue-router'
 
 import App from './App'
-import InvalidUser from './InvalidUser.vue'
-import Register from './pages/Register'
-import Dashboard from './pages/Dashboard'
-import Login from './pages/Login'
 
 import Helper from './FBHelper'
 import VueFire from 'vuefire'
@@ -31,10 +27,6 @@ Vue.use(Vuex)
  */
 const routes = [
     { path: '/', component: App },
-    { path: '/invalid', component: InvalidUser },
-    { path: '/register', component: Register },
-    { path: '/dashboard', component: Dashboard },
-    { path: '/login', component: Login },
 ]
 const router = new VueRouter({
     routes,
@@ -44,22 +36,26 @@ const router = new VueRouter({
 const store = new Vuex.Store({
     state: {
         count: 0,
-        user: '',
-        missingTimes: '',
-        events: ''
+        loggedInUser: null,
+        missingTimes: null,
+        events: null,
+        selectedStudent: null
     },
     mutations: {
         increment(state) {
             state.count++
         },
         setUser(state, newUser) {
-            state.user = newUser
+            state.loggedInUser = newUser
         },
         setMissingTimes(state, missingTimes) {
             state.missingTimes = missingTimes
         },
         setEventList(state, eventList) {
             state.events = eventList
+        },
+        setSelectedStudent(state, student) {
+            state.selectedStudent = student
         }
     }
 })
@@ -81,5 +77,6 @@ firebase.auth().onAuthStateChanged((user) => {
         store.commit('setUser', user)
     } else {
         console.log('Invalid user');
+        store.commit('setUser', null)
     }
 })

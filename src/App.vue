@@ -1,92 +1,64 @@
 <template>
-  <div id='app'>
-    <div class='container-fluid'>
-      <div class="row">        
-        <button class='btn btn-danger' @click='logout()' v-if='loggedIn == true'>Logout</button>
-        <firebaselogin v-else></firebaselogin>
+  <div id='app' class='container'>
+    <!-- STUDENT SELECTION -->
+    <div class='row'>
+      <div class='col-md-12'>
+      <label for='student_select'>Aktueller Schüler</label>
+        <select name='student_select' id='student_select' v-model='studentSelection'>
+          <option v-for='student in studentlist' v-bind:activeStudent='student'>{{student.name}}</option>
+        </select>
       </div>
-      <div class='row'>
-        <overview :currentuser='user'></overview>
+    </div>
+    <!-- STUDENT SELECTION -->
+    <div class='row'>
+      <div class='col-md-12'>
+        <p v-if='userStoreWatch'>User Watch: {{userStoreWatch.uid}}</p>  
       </div>
-      <div class='row'>
-        <div class="col-md-12">
-          <missedtimes :currentuser='user'></missedtimes>
-        </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <test></test>  
       </div>
-      <div class='row'>
-        <div class="col-md-12">
-          <personalevents :currentuser='user'></personalevents>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <marklist :currentuser='user'></marklist>
-        </div>
-      </div>
-    </div>    
+    </div>
+    
   </div>
-</div>
+  
 </template>
 
 
 <script>
-  import overview from './components/Overview'
-  import missedtimes from './components/MissedTimes.vue'
-  import personalevents from './components/EventList'
-  import firebaselogin from './components/FirebaseLogin'
-  import marklist from './components/MarkList'
-  import Helper from './FBHelper.js'
-  import User from './User.js'
-  import awesome from './awesomeDebug.js'
-  import firebase from 'firebase';
-
-  var fbhelper = new Helper();
-  var user = ""
-  var loggedIn = false
-
-  export default {
-    name: 'app',
-    components: {
-      firebaselogin,
-      overview,
-      missedtimes,
-      personalevents,
-      marklist
-    },
-    methods: {
-      logout: function () {
-        fbhelper.signOutUser()
-      },
-      setMissingTimes: function(da){
-
-      }
-    },
-    watch: {
-      user: function(){
-        awesome.debug('debug','App.vue','Current user change detected')
-      }
-    },
-    data() {
-      return {
-        user,
-        loggedIn: false
-      }
-    },
-    created(){
-      // Valid after page refresh
-      firebase.auth().onAuthStateChanged((newUser) => {
-        if(newUser){
-          this.user = newUser
-          this.loggedIn = true
-        } else {
-          awesome.debug('info','App.vue','User logged out')
-          this.user = false
-          this.loggedIn = false
-        }
-      })
+import test from './components/test'
+import firebase from 'firebase'
+export default {
+  data() {
+    return {
+      studentlist: null,
+      studentSelection: null
     }
-  }
+  },
+  created(){
+    firebase.database().ref('users/').once('value', snapshot =>{
+      this.studentlist = snapshot.val()
+    })
+  },
+  watch: {
+    studentSelection: () => {
+      console.log(this.activeStudent)
+    }
+  },
+  computed: {
+    countMethod(){
+      return this.$store.state.count
+    },
+    userStoreWatch(){
+      return this.$store.state.loggedInUser
+    }
 
+  },
+  components:{
+    test
+  },  
+}
 </script>
 
 <style scoped>
