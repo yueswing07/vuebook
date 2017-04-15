@@ -1,62 +1,90 @@
 <template>
   <div id='app' class='container'>
+  <!-- User Personal -->
+  <div class="row">
+    <div class="col-md-12">
+      <p>Benutzername: <span>{{userStoreWatch.displayName}}</span></p>
+    </div>
+  </div>
+  <!-- User Personal -->
     <!-- STUDENT SELECTION -->
     <div class='row'>
       <div class='col-md-12'>
       <label for='student_select'>Aktueller Schüler</label>
         <select name='student_select' id='student_select' v-model='studentSelection'>
-          <option v-for='student in studentlist' v-bind:activeStudent='student'>{{student.name}}</option>
+          <option v-for='student in studentlist' v-bind:value='{activeStudent:student}'>{{student.name}}</option>
         </select>
       </div>
     </div>
     <!-- STUDENT SELECTION -->
     <div class='row'>
       <div class='col-md-12'>
-        <p v-if='userStoreWatch'>User Watch: {{userStoreWatch.uid}}</p>  
+        <p>Ausgewählter Schüler: {{selectedStudentWatch.name}}</p>  
       </div>
     </div>
     <div class='row'>
       <div class='col-md-12'>
-        <test></test>  
+        <test></test> 
       </div>
     </div>
-    
+    <div class='row'>
+      <div class='col-md-12'>
+        <missingtimes></missingtimes> 
+      </div>
+    </div>
   </div>
-  
 </template>
 
 
 <script>
+/* Components */
 import test from './components/test'
+import missingtimes from './components/MissingTime'
+/* Other stuff */
 import firebase from 'firebase'
+import awesome from './awesomeDebug'
+
 export default {
   data() {
     return {
-      studentlist: null,
-      studentSelection: null
+      studentlist: '',
+      studentSelection: ''
     }
   },
   created(){
     firebase.database().ref('users/').once('value', snapshot =>{
       this.studentlist = snapshot.val()
-    })
+    })    
   },
   watch: {
-    studentSelection: () => {
-      console.log(this.activeStudent)
+    studentSelection: function() {
+      console.log(this.studentSelection.activeStudent)
+      this.$store.commit('setSelectedStudent',this.studentSelection.activeStudent)
     }
   },
   computed: {
-    countMethod(){
-      return this.$store.state.count
+    missingTimesListener(){
+      awesome.debug('debug','App.vue','Missing Times list changed')
+      return this.$store.state.missingTimes
     },
     userStoreWatch(){
       return this.$store.state.loggedInUser
+    },
+    selectedStudentWatch(){
+      var that = this
+      /* Firebase database observer */
+      /* Should be triggered everytime a value in this ref() changes */
+      firebase.database().ref('users/'+this.$store.state.selectedStudent.uid+'/missingtimes').on('value', function(snapshot){
+        awesome.debug('debug','App.vue','Database listener <Value changes in Database>',snapshot.val())
+        that.$store.commit('setMissingTimes',snapshot.val())
+      })
+      return this.$store.state.selectedStudent
     }
 
   },
   components:{
-    test
+    test,
+    missingtimes
   },  
 }
 </script>

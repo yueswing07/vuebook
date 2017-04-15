@@ -36,10 +36,10 @@ const router = new VueRouter({
 const store = new Vuex.Store({
     state: {
         count: 0,
-        loggedInUser: null,
-        missingTimes: null,
-        events: null,
-        selectedStudent: null
+        loggedInUser: '',
+        missingTimes: '',
+        events: '',
+        selectedStudent: ''
     },
     mutations: {
         increment(state) {

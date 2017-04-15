@@ -1,5 +1,5 @@
 <template>
-<h1  v-if='userStoreWatch'>test component: {{userStoreWatch.uid}}</h1>
+  <h1>Ausgewählterr Schüler: {{selectedStudentWatch.name}}</h1>
 </template>
 <script>
 export default {
@@ -18,6 +18,9 @@ export default {
     },
     userStoreWatch() {
       return this.$store.state.loggedInUser
+    },
+    selectedStudentWatch(){
+      return this.$store.state.selectedStudent
     }
 
   },
