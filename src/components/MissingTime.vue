@@ -28,6 +28,7 @@
                 <input type="text" id='missingTime_edit_description' placeholder='Grund' v-model='selectedTime_description'>
                 <input type="time" id='missingTime_edit_duration' v-model='selectedTime_duration'>
                 <input type="text" id='missingTime_edit_description' placeholder='Stunde' v-model='selectedTime_lesson'>
+                <input type="button" id='missingTime_edit_send' class='btn btn-warning' @click='updateMissingTime()' value='Fehlzeit schreiben'>
             </div>
         </div>
     </div>
@@ -42,7 +43,8 @@
                 selectedTime_description: '',
                 selectedTime_duration: '',
                 selectedTime_lesson: '',
-                selectedTime_status: '',                
+                selectedTime_status: '',
+                selectedTime_uid: ''      
             }
         },
         methods: {
@@ -52,6 +54,23 @@
                 this.selectedTime_description   = missingTime.description
                 this.selectedTime_duration      = missingTime.duration
                 this.selectedTime_lesson        = missingTime.lesson
+                this.selectedTime_uid           = missingTime.uid
+            },
+            updateMissingTime: function(){
+                /* Create new missing Time object */
+                /* Force creation of a UID */
+                var timeUID = new Date().getTime()
+
+                var timeObject = {
+                    date: this.selectedTime_date,
+                    description: this.selectedTime_description,
+                    duration: this.selectedTime_duration,
+                    lesson: this.selectedTime_lesson,
+                    uid: timeUID
+                }
+                awesome.debug('debug','MissingTime.vue','New missingTime Object',timeObject)
+                /* Notify store to force updates */
+                this.$store.commit('updateMissingTime',timeObject)
             }
         },
         computed: {

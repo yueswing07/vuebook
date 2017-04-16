@@ -56,6 +56,19 @@ const store = new Vuex.Store({
         },
         setSelectedStudent(state, student) {
             state.selectedStudent = student
+        },
+        updateMissingTime(state, singleTime) {
+            if (!singleTime.uid) {
+                alert('Die zu ändernde Zeit hat keine UID!')
+            } else {
+                console.log('Updateing missing Time', singleTime)
+                if (state.selectedStudent) {
+                    firebase.database().ref('users/' + state.selectedStudent.uid + '/missingtimes/' + singleTime.uid).update(singleTime)
+                } else {
+                    alert('Es wurde kein Benutzer ausgewählt')
+                }
+
+            }
         }
     }
 })
