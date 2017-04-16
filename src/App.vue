@@ -58,13 +58,11 @@ export default {
   },
   watch: {
     studentSelection: function() {
-      console.log(this.studentSelection.activeStudent)
       this.$store.commit('setSelectedStudent',this.studentSelection.activeStudent)
     }
   },
   computed: {
     missingTimesListener(){
-      awesome.debug('debug','App.vue','Missing Times list changed')
       return this.$store.state.missingTimes
     },
     userStoreWatch(){
@@ -75,7 +73,6 @@ export default {
       /* Firebase database observer */
       /* Should be triggered everytime a value in this ref() changes */
       firebase.database().ref('users/'+this.$store.state.selectedStudent.uid+'/missingtimes').on('value', function(snapshot){
-        awesome.debug('debug','App.vue','Database listener <Value changes in Database>',snapshot.val())
         that.$store.commit('setMissingTimes',snapshot.val())
       })
       return this.$store.state.selectedStudent
