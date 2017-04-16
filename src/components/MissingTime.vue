@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <ul name="missing_times" id="missing_times">
-                    <li v-for='missingTime in timesObserv'>
+                    <li v-for='missingTime in timesObserv' @click='missingTimeSelected(missingTime)'>
                         <span class='delete_item'>X</span>
                         <span class='missing_time_element'>Datum: {{missingTime.date}}</span>
                         <span class='missing_time_element'>Dauer: {{missingTime.duration}}</span>
@@ -22,14 +22,36 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="date" id='missingTime_edit_date' v-model='selectedTime_date'>
+                <input type="text" id='missingTime_edit_description' placeholder='Grund' v-model='selectedTime_description'>
+                <input type="time" id='missingTime_edit_duration' v-model='selectedTime_duration'>
+                <input type="text" id='missingTime_edit_description' placeholder='Stunde' v-model='selectedTime_lesson'>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import awesome from '../awesomeDebug'
     export default {
         data(){
             return{
-
+                selectedTime_date: '',
+                selectedTime_description: '',
+                selectedTime_duration: '',
+                selectedTime_lesson: '',
+                selectedTime_status: '',                
+            }
+        },
+        methods: {
+            missingTimeSelected: function(missingTime) {
+                awesome.debug('debug','MissingTime.vue','Selected missing time entry',missingTime)
+                this.selectedTime_date          = missingTime.date
+                this.selectedTime_description   = missingTime.description
+                this.selectedTime_duration      = missingTime.duration
+                this.selectedTime_lesson        = missingTime.lesson
             }
         },
         computed: {
@@ -47,6 +69,9 @@
         overflow-x: hidden;
         overflow-y: scroll;
         padding-left: 0;
+    }
+    ul:hover{
+        cursor: pointer;
     }
     ul li {
         margin-bottom: 15px;
