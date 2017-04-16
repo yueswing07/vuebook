@@ -32,6 +32,11 @@
         <missingtimes></missingtimes> 
       </div>
     </div>
+    <div class='row'>
+      <div class='col-md-12'>
+        <userevents></userevents> 
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,6 +45,7 @@
 /* Components */
 import test from './components/test'
 import missingtimes from './components/MissingTime'
+import userevents from './components/Events'
 /* Other stuff */
 import firebase from 'firebase'
 import awesome from './awesomeDebug'
@@ -75,13 +81,17 @@ export default {
       firebase.database().ref('users/'+this.$store.state.selectedStudent.uid+'/missingtimes').on('value', function(snapshot){
         that.$store.commit('setMissingTimes',snapshot.val())
       })
+      firebase.database().ref('users/'+this.$store.state.selectedStudent.uid+'/events').on('value', function(snapshot){
+        that.$store.commit('setEventList',snapshot.val())
+      })
       return this.$store.state.selectedStudent
     }
 
   },
   components:{
     test,
-    missingtimes
+    missingtimes,
+    userevents
   },  
 }
 </script>

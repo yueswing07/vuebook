@@ -77,7 +77,28 @@ const store = new Vuex.Store({
                 alert('Es wurde kein Schüler ausgewählt')
             }
 
-        }
+        },
+        updateUserEvent(state, singleEvent) {
+            if (!singleEvent.uid) {
+                alert('Die zu ändernde Zeit hat keine UID!')
+            } else {
+                console.log('Updateing missing Time', singleEvent)
+                if (state.selectedStudent) {
+                    firebase.database().ref('users/' + state.selectedStudent.uid + '/events/' + singleEvent.uid).update(singleEvent)
+                } else {
+                    alert('Es wurde kein Schüler ausgewählt')
+                }
+
+            }
+        },
+        removeUserEvent(state, eventUID) {
+            if (state.selectedStudent) {
+                firebase.database().ref('users/' + state.selectedStudent.uid + '/events/' + eventUID).remove()
+            } else {
+                alert('Es wurde kein Schüler ausgewählt')
+            }
+
+        },
     }
 })
 
