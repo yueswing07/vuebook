@@ -37,6 +37,7 @@ const store = new Vuex.Store({
     state: {
         count: 0,
         loggedInUser: '',
+        validUser: '',
         missingTimes: '',
         events: '',
         selectedStudent: ''
@@ -45,8 +46,22 @@ const store = new Vuex.Store({
         increment(state) {
             state.count++
         },
-        setUser(state, newUser) {
-            state.loggedInUser = newUser
+        setUser(state, user){
+            state.loggedInUser = user
+        },
+        loginUser(state,providerName) {
+            switch(providerName){
+                case 'google':
+                    var provider = new firebase.auth.GoogleAuthProvider();
+                    firebase.auth().signInWithPopup(provider).then(function(result) {
+                        state.loggedInUser = result.user
+                    })
+                break;
+            }                  
+        },
+        logoutUser(state){
+            state.loggedInUser = null
+            firebase.auth().signOut()
         },
         setMissingTimes(state, missingTimes) {
             state.missingTimes = missingTimes
@@ -113,12 +128,11 @@ const application = new Vue({
     store
 }).$mount('#app');
 
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        console.log('Valid user');
-        store.commit('setUser', user)
+var that = this
+firebase.auth().onAuthStateChanged(function(user){
+    if(user){
+        store.commit('setUser',user)
     } else {
-        console.log('Invalid user');
-        store.commit('setUser', null)
+        store.commit('setUser',null)
     }
 })

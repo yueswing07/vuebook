@@ -6,6 +6,7 @@
     <div class="wrapper container">
     <div class="row">
         <div class="col-md-12">
+            <span class='hiddenObserver'>{{userObserver}}</span>
             <h1>Fehlzeiten</h1>
         </div>
     </div>
@@ -116,6 +117,22 @@
             /* Observe changes to missing times list */
             timesObserv(){
                 return this.$store.state.missingTimes
+            },
+            userObserver(){
+                awesome.debug('debug','MissingTime.vue','User state changed',this.$store.state.loggedInUser)
+                if(!this.$store.state.loggedInUser){
+                    this.selectedTime_date = '',
+                    this.selectedTime_description = '',
+                    this.selectedTime_duration = '',
+                    this.selectedTime_lesson = '',
+                    this.selectedTime_status = '',
+                    this.selectedTime_uid = '',
+                    this.newTime_date = '',
+                    this.newTime_description = '',
+                    this.newTime_duration = '',
+                    this.newTime_lesson = '' 
+                }
+                return this.$store.state.loggedInUser
             }
         }
     }
@@ -149,5 +166,8 @@
         color: red;
         padding-left: 10px;
         padding-right: 10px;
+    }
+    .hiddenObserver{
+        display: none;
     }
 </style>
