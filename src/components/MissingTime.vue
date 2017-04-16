@@ -59,7 +59,12 @@
             updateMissingTime: function(){
                 /* Create new missing Time object */
                 /* Force creation of a UID */
-                var timeUID = new Date().getTime()
+                if(!this.selectedTime_uid){
+                    var timeUID = new Date().getTime()
+                } else {
+                    var timeUID = this.selectedTime_uid
+                }
+                
 
                 var timeObject = {
                     date: this.selectedTime_date,
