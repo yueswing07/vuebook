@@ -65,10 +65,18 @@ const store = new Vuex.Store({
                 if (state.selectedStudent) {
                     firebase.database().ref('users/' + state.selectedStudent.uid + '/missingtimes/' + singleTime.uid).update(singleTime)
                 } else {
-                    alert('Es wurde kein Benutzer ausgewählt')
+                    alert('Es wurde kein Schüler ausgewählt')
                 }
 
             }
+        },
+        removeMissingTime(state, timeEntryUID) {
+            if (state.selectedStudent) {
+                firebase.database().ref('users/' + state.selectedStudent.uid + '/missingtimes/' + timeEntryUID).remove()
+            } else {
+                alert('Es wurde kein Schüler ausgewählt')
+            }
+
         }
     }
 })

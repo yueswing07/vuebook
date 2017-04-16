@@ -13,7 +13,7 @@
             <div class="col-md-12">
                 <ul name="missing_times" id="missing_times">
                     <li v-for='missingTime in timesObserv' @click='missingTimeSelected(missingTime)'>
-                        <span class='delete_item'>X</span>
+                        <span class='delete_item' @click='removeMissingTime()'>X</span>
                         <span class='missing_time_element'>Datum: {{missingTime.date}}</span>
                         <span class='missing_time_element'>Dauer: {{missingTime.duration}}</span>
                         <span class='missing_time_element'>Stunde: {{missingTime.lesson}}</span>
@@ -71,6 +71,14 @@
                 awesome.debug('debug','MissingTime.vue','New missingTime Object',timeObject)
                 /* Notify store to force updates */
                 this.$store.commit('updateMissingTime',timeObject)
+                // TODO: Reset selected missing time object to prevent UID fault //
+                
+            },
+            removeMissingTime: function(){
+                awesome.debug('debug','MissingTime.vue','Selected missing Time UID',this.selectedTime_uid)
+                if(this.selectedTime_uid){
+                    this.$store.commit('removeMissingTime', this.selectedTime_uid)
+                }
             }
         },
         computed: {
