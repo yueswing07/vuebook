@@ -28,7 +28,7 @@
                 <input type="text" id='missingTime_edit_description' placeholder='Grund' v-model='selectedTime_description'>
                 <input type="time" id='missingTime_edit_duration' v-model='selectedTime_duration'>
                 <input type="text" id='missingTime_edit_description' placeholder='Stunde' v-model='selectedTime_lesson'>
-                <input type="button" id='missingTime_edit_send' class='btn btn-warning' @click='updateMissingTime()' value='Fehlzeit schreiben'>
+                <input type="button" id='missingTime_edit_send' class='btn btn-warning' @click='updateMissingTime()' value='Bearbeitung abschliesen'>
             </div>
         </div>
     </div>
