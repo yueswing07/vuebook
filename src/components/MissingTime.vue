@@ -31,6 +31,15 @@
                 <input type="button" id='missingTime_edit_send' class='btn btn-warning' @click='updateMissingTime()' value='Bearbeitung abschliesen'>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="date" id='missingTime_edit_date' v-model='newTime_date'>
+                <input type="text" id='missingTime_edit_description' placeholder='Grund' v-model='newTime_description'>
+                <input type="time" id='missingTime_edit_duration' v-model='newTime_duration'>
+                <input type="text" id='missingTime_edit_description' placeholder='Stunde' v-model='newTime_lesson'>
+                <input type="button" id='missingTime_edit_send' class='btn btn-primary' @click='createMissingTime()' value='Fehlzeit eintragen'>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -44,7 +53,11 @@
                 selectedTime_duration: '',
                 selectedTime_lesson: '',
                 selectedTime_status: '',
-                selectedTime_uid: ''      
+                selectedTime_uid: '',
+                newTime_date: '',
+                newTime_description: '',
+                newTime_duration: '',
+                newTime_lesson: '' 
             }
         },
         methods: {
@@ -79,6 +92,19 @@
                 if(this.selectedTime_uid){
                     this.$store.commit('removeMissingTime', this.selectedTime_uid)
                 }
+            },
+            createMissingTime: function(){
+                /* Time object that will be written to DB */
+                var timeObject = {
+                    date: this.newTime_date,
+                    description: this.newTime_description,
+                    duration: this.newTime_duration,
+                    lesson: this.newTime_lesson,
+                    status: 'Pending',
+                    uid: new Date().getTime()
+                }
+                /* Notify store about new time */
+                this.$store.commit('updateMissingTime',timeObject)
             }
         },
         computed: {
