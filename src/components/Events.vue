@@ -74,7 +74,10 @@
           }
           /* Notify store to force updates */
           this.$store.commit('updateUserEvent', eventObject)
-          // TODO: Reset selected missing time object to prevent UID fault //
+          this.selectedEvent_date = ''
+          this.selectedEvent_description = ''
+          this.selectedEvent_time = ''
+          this.selectedEvent_uid = ''
 
         },
         removeUserEvent: function () {
@@ -92,6 +95,9 @@
           }
           /* Notify store about new time */
           this.$store.commit('updateUserEvent', eventObject)
+          this.newEvent_date = ''
+          this.newEvent_description = ''
+          this.newEvent_time = ''
         }
       },
       computed: {
