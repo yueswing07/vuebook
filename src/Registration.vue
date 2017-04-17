@@ -107,6 +107,7 @@
                     uid: '',
                     timestamp: '',
                     name: '',
+                    isRegistered: '',
                     company: {
                         name: '',
                         plz: '',
@@ -122,6 +123,10 @@
             }
         },
         created() {
+            /* Redirect invalid users */
+            if ( this.$store.state.loggedInUser.isRegistered ){
+                this.$router.push('/app')
+            }
             awesome.debug('debug','Registration.vue','Registration component loaded',this.$store.state.loggedInUser)
             /* Prefill form values */
             firebase.database().ref('classes/').once('value', snapshot => {
@@ -214,6 +219,7 @@
                     this.userObject.timestamp = new Date()
                     this.userObject.uid = this.$store.state.loggedInUser.uid
                     this.userObject.name = this.$store.state.loggedInUser.displayName
+                    this.userObject.isRegistered = true
                     this.$store.commit('registerUser',this.userObject)
                 }
             },
