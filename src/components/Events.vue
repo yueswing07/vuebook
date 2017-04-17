@@ -21,7 +21,7 @@
     <div class="col-md-12">
       <input type="date" id='userEvent_edit_date' v-model='selectedEvent_date'>
       <input type="text" id='userEvent_edit_description' placeholder='Grund' v-model='selectedEvent_description'>
-      <input type="time" id='userEvent_edit_duration' v-model='selectedEvent_time'>
+      <input type="time" id='userEvent_edit_time' v-model='selectedEvent_time'>
       <input type="button" id='userEvent_edit_send' class='btn btn-warning' @click='updateUserEvent()' value='Bearbeitung abschliesen'>
     </div>
   </div>
@@ -29,7 +29,7 @@
     <div class="col-md-12">
       <input type="date" id='userEvent_edit_date' v-model='newEvent_date'>
       <input type="text" id='userEvent_edit_description' placeholder='Grund' v-model='newEvent_description'>
-      <input type="time" id='userEvent_edit_duration' v-model='newEvent_duration'>
+      <input type="time" id='userEvent_edit_time' v-model='newEvent_time'>
       <input type="button" id='userEvent_edit_send' class='btn btn-primary' @click='createUserEvent()' value='Event eintragen'>
     </div>
   </div>
@@ -47,14 +47,14 @@
           selectedEvent_uid: '',
           newEvent_date: '',
           newEvent_description: '',
-          newEvent_duration: '',
+          newEvent_time: '',
         }
       },
       methods: {
         userEventSelected: function (userEvent) {
           this.selectedEvent_date = userEvent.date
           this.selectedEvent_description = userEvent.description
-          this.selectedEvent_time = userEvent.duration
+          this.selectedEvent_time = userEvent.time
           this.selectedEvent_uid = userEvent.uid
         },
         updateUserEvent: function () {
@@ -69,7 +69,7 @@
           var eventObject = {
             date: this.selectedEvent_date,
             description: this.selectedEvent_description,
-            duration: this.selectedEvent_time,
+            time: this.selectedEvent_time,
             uid: timeUID
           }
           /* Notify store to force updates */
@@ -87,7 +87,7 @@
           var eventObject = {
             date: this.newEvent_date,
             description: this.newEvent_description,
-            duration: this.newEvent_duration,
+            time: this.newEvent_time,
             uid: new Date().getTime()
           }
           /* Notify store about new time */
