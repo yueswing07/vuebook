@@ -90,7 +90,10 @@
                 awesome.debug('debug','MissingTime.vue','New missingTime Object',timeObject)
                 /* Notify store to force updates */
                 this.$store.commit('updateMissingTime',timeObject)
-                // TODO: Reset selected missing time object to prevent UID fault //
+                this.selectedTime_date =  ''
+                this.selectedTime_description =  ''
+                this.selectedTime_duration =  ''
+                this.selectedTime_lesson =  ''
                 
             },
             removeMissingTime: function(){
@@ -111,6 +114,10 @@
                 }
                 /* Notify store about new time */
                 this.$store.commit('updateMissingTime',timeObject)
+                this.newTime_date = ''
+                this.newTime_description = ''
+                this.newTime_duration = ''
+                this.newTime_lesson = ''
             }
         },
         computed: {
