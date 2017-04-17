@@ -59,7 +59,8 @@
                         <input type="text" id='instructor_name' placeholder='Tel.' v-model='value_instructor_phone'>
                     </li>
                 </ul>
-                <input type="button" class='btn btn-primary pull-right' value='Senden' @click='sendData()'>
+                <input type="button" class='btn btn-primary' value='Senden' @click='sendData()'>
+                <input type="button" class='btn btn-danger' value='Abbrechen' @click='candelRegistration()'>
             </div>            
         </div>
     </div>
