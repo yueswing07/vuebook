@@ -26,6 +26,7 @@
         <div class="row">
             <div class="col-md-12">
                 <input type="button" class='btn btn-primary' value='Abschicken' @click='registerAsTeacher()'>
+                <input type="button" class='btn btn-danger' value='Abbrechen' @click='candelRegistration()'>
             </div>
         </div>
     </div>
@@ -81,6 +82,9 @@
                 this.userObject.classlist = this.classlist
                 this.userObject.isTeacher = true
                 this.$store.commit('registerUser', this.userObject)
+            },
+            candelRegistration: function(){
+                this.$router.push('/')
             }
         }
     }
