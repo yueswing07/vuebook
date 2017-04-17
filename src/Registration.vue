@@ -223,10 +223,13 @@
                     this.$store.commit('registerUser',this.userObject)
                 }
             },
+            candelRegistration: function(){
+                this.$router.push('/')
+            }
         },
     }
 </script>
-<style>
+<style scoped>
     ul{
         list-style: none;
         padding-left: 0;
