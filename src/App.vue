@@ -1,58 +1,59 @@
 <template>
   <div id='app' class='container'>
     <div v-if='userStoreWatch'>
-    <div class="row">
-      <div class="col-md-12">
-        <input type="button" class='btn btn-danger' @click='logoutUser()' value='Abmelden'>
-      </div>
-    </div>
-      <!-- User Personal -->
       <div class="row">
         <div class="col-md-12">
-          <p>Benutzername: <span>{{userStoreWatch.displayName}}</span></p>
+          <input type="button" class='btn btn-danger' @click='logoutUser()' value='Abmelden'>
         </div>
       </div>
-      <!-- User Personal -->
-        <!-- STUDENT SELECTION -->
-        <div class='row'>
-          <div class='col-md-12'>
-          <label for='student_select'>Aktueller Schüler</label>
-            <select name='student_select' id='student_select' v-model='studentSelection'>
-              <option v-for='student in studentlist' v-bind:value='{activeStudent:student}'>{{student.name}}</option>
-            </select>
+        <!-- User Personal -->
+        <div class="row">
+          <div class="col-md-12">
+            <p>Benutzername: <span>{{userStoreWatch.displayName}}</span></p>
           </div>
         </div>
-        <!-- STUDENT SELECTION -->
-        <div class='row'>
-          <div class='col-md-12'>
-            <p>Ausgewählter Schüler: {{selectedStudentWatch.name}}</p>  
+        <!-- User Personal -->
+          <!-- STUDENT SELECTION -->
+          <div class='row'>
+            <div class='col-md-12'>
+            <label for='student_select'>Aktueller Schüler</label>
+              <select name='student_select' id='student_select' v-model='studentSelection'>
+                <option v-for='student in studentlist' v-bind:value='{activeStudent:student}'>{{student.name}}</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <!-- Grades -->
-        <div class='row'>
-          <div class='col-md-12'>
-            <grades></grades> 
+          <!-- STUDENT SELECTION -->
+          <div class='row'>
+            <div class='col-md-12'>
+              <p>Ausgewählter Schüler: {{selectedStudentWatch.name}}</p>  
+            </div>
           </div>
-        </div>
-        <!-- Grades -->
-        <!-- Missing Times -->
-        <div class='row'>
-          <div class='col-md-12'>
-            <missingtimes></missingtimes> 
+          <!-- Grades -->
+          <div class='row'>
+            <div class='col-md-12'>
+              <grades></grades> 
+            </div>
           </div>
-        </div>
-        <!-- Missing Times -->
-        <!-- Events -->
-        <div class='row'>
-          <div class='col-md-12'>
-            <userevents></userevents> 
+          <!-- Grades -->
+          <!-- Missing Times -->
+          <div class='row'>
+            <div class='col-md-12'>
+              <missingtimes></missingtimes> 
+            </div>
           </div>
-        </div>
-        <!-- Events -->
+          <!-- Missing Times -->
+          <!-- Events -->
+          <div class='row'>
+            <div class='col-md-12'>
+              <userevents></userevents> 
+            </div>
+          </div>
+          <!-- Events -->
       </div> <!-- IF USER -->
       <div v-else>
         <h1>Login needed!</h1>
         <login></login>
+        <router-view></router-view>
       </div>
     </div>
 </template>
@@ -60,7 +61,6 @@
 
 <script>
 /* Components */
-import test from './components/test'
 import missingtimes from './components/MissingTime'
 import userevents from './components/Events'
 import login from './components/Login'
@@ -116,7 +116,6 @@ export default {
 
   },
   components:{
-    test,
     missingtimes,
     userevents,
     login,

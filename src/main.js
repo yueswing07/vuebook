@@ -5,6 +5,8 @@ import Vuex from 'Vuex'
 import VueRouter from 'vue-router'
 
 import App from './App'
+import Registration from './Registration.vue'
+import Welcome from './Welcome.vue'
 
 import Helper from './FBHelper'
 import VueFire from 'vuefire'
@@ -26,12 +28,12 @@ Vue.use(Vuex)
   ROUTING
  */
 const routes = [
-    { path: '/', component: App },
+    { path: '/', component: Welcome },
+    { path: '/registration', component: Registration },
+    { path: '/app', component: App },
 ]
 const router = new VueRouter({
     routes,
-    mode: 'hash',
-    base: window.location.href
 })
 const store = new Vuex.Store({
     state: {
@@ -121,6 +123,10 @@ const store = new Vuex.Store({
                     })
                 }
             })
+        },
+        registerUser(state,userObject){
+            firebase.database().ref('users/'+state.loggedInUser.uid+'/').update(userObject)
+            router.push('/app')
         }
     }
 })
@@ -130,8 +136,7 @@ const store = new Vuex.Store({
 */
 const application = new Vue({
     el: '#app',
-    template: '<App/>',
-    components: { App },
+    components: { App,Registration,Welcome },
     router,
     store
 }).$mount('#app');
@@ -139,6 +144,14 @@ const application = new Vue({
 var that = this
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
+        firebase.database().ref('users/'+user.uid).once('value', (snapshot)=>{
+            if (!snapshot.val()){
+                awesome.debug('info','main.js','New User')
+                router.push('/registration')
+            } else {
+                router.push('/app')
+            }
+        })
         store.commit('setUser',user)
     } else {
         store.commit('setUser',null)
