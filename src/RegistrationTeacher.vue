@@ -79,7 +79,7 @@
                 this.userObject.timestamp = new Date()
                 this.userObject.name = this.$store.state.loggedInUser.displayName
                 this.userObject.uid = this.$store.state.loggedInUser.uid
-                this.userObject.classlist = this.classlist
+                this.userObject.classlist = this.checkedNames
                 this.userObject.isTeacher = true
                 this.$store.commit('registerUser', this.userObject)
             },
