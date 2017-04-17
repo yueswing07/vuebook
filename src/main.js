@@ -104,7 +104,6 @@ const store = new Vuex.Store({
                 } else {
                     alert('Es wurde kein Schüler ausgewählt')
                 }
-
             }
         },
         removeUserEvent(state, eventUID) {
@@ -113,8 +112,16 @@ const store = new Vuex.Store({
             } else {
                 alert('Es wurde kein Schüler ausgewählt')
             }
-
         },
+        updateSingleGrade(state,furtherParamters){
+            Object.keys(state.gradelist).forEach(key => {
+                if (state.gradelist[key].name === furtherParamters.lernfeld){
+                    firebase.database().ref('users/'+state.selectedStudent.uid+ '/grades/'+key).update({
+                        'grade': furtherParamters.newGrade
+                    })
+                }
+            })
+        }
     }
 })
 

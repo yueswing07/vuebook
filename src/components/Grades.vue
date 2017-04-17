@@ -14,7 +14,7 @@
                     <tbody>
                         <td v-for='subject in gradesObserv' class='gradestable-body-item'>
                             <span>Note {{subject.grade}}</span>
-                            <tr><input type="text" class='gradeInput' placeholder='Neu'></tr>
+                            <tr><input type="text" class='gradeInput' :ref='createRef(subject.name)' placeholder='Neu' @keyup='gradechange(subject.name)'></tr>
                         </td>
                     </tbody>
                 </table>
@@ -23,16 +23,33 @@
     </div>
 </template>
 <script>
+    import awesome from '../awesomeDebug'
     export default {
         data(){
             return {
-                subjectlist: '',
-                edit_subject: ''
+                newgrade: ''
             }
         },
         computed: {
             gradesObserv: function(){
                 return this.$store.state.gradelist
+            }
+        },
+        methods: {
+            gradechange(currSubj){
+                var trimmedRefName = this.createRef(currSubj)
+                var newGrade = this.$refs[trimmedRefName][0].value
+                /* Can only pass one additional paramter to the store object */
+                /* This object can be expanded as needed to pass further informations if needed */
+                var paraObject = {
+                    'lernfeld': currSubj,
+                    'newGrade': newGrade
+                }
+                this.$store.commit('updateSingleGrade',paraObject)
+            },
+            /* Vue doesn't like spaces in the ref name */
+            createRef(_subject){
+                return _subject.replace(/\s+/, "") 
             }
         },
 
