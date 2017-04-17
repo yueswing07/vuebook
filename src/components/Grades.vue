@@ -46,6 +46,7 @@
                     'newGrade': newGrade
                 }
                 this.$store.commit('updateSingleGrade',paraObject)
+                this.$refs[trimmedRefName][0].value = ''
             },
             /* Vue doesn't like spaces in the ref name */
             createRef(_subject){
