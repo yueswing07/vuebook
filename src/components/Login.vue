@@ -10,9 +10,16 @@
 
             }
         },
+        props: [
+            'loginType'
+        ],
         methods: {
             login: function(providerName){
-                this.$store.commit('loginUser',providerName)
+                var loginInfos = {
+                    'providerName': providerName,
+                    'loginType': this.loginType
+                }
+                this.$store.commit('loginUser',loginInfos)
             },
         }
     }

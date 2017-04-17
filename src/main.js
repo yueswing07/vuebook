@@ -5,7 +5,8 @@ import Vuex from 'Vuex'
 import VueRouter from 'vue-router'
 
 import App from './App'
-import Registration from './Registration.vue'
+import RegistrationStudent from './Registration.vue'
+import RegistrationTeacher from './RegistrationTeacher'
 import Welcome from './Welcome.vue'
 
 import Helper from './FBHelper'
@@ -29,7 +30,8 @@ Vue.use(Vuex)
  */
 const routes = [
     { path: '/', component: Welcome },
-    { path: '/registration', component: Registration },
+    { path: '/registration-student', component: RegistrationStudent },
+    { path: '/registration-teacher', component: RegistrationTeacher },
     { path: '/app', component: App },
 ]
 const router = new VueRouter({
@@ -37,7 +39,7 @@ const router = new VueRouter({
 })
 const store = new Vuex.Store({
     state: {
-        count: 0,
+        loginType: '',
         loggedInUser: '',
         validUser: '',
         missingTimes: '',
@@ -49,18 +51,21 @@ const store = new Vuex.Store({
         setUser(state, user){
             state.loggedInUser = user
         },
-        loginUser(state,providerName) {
-            switch(providerName){
+        loginUser(state,loginInfos) {
+            awesome.debug('debug','main.js','Login type infos',loginInfos.loginType)
+            switch(loginInfos.providerName){
                 case 'google':
                     var provider = new firebase.auth.GoogleAuthProvider();
                     firebase.auth().signInWithPopup(provider).then(function(result) {
                         state.loggedInUser = result.user
+                        state.loginType = loginInfos.loginType
                     })
                 break;
-            }                  
+            }
         },
         logoutUser(state){
             state.loggedInUser = null
+            router.push('/')
             firebase.auth().signOut()
         },
         setMissingTimes(state, missingTimes) {
@@ -136,7 +141,7 @@ const store = new Vuex.Store({
 */
 const application = new Vue({
     el: '#app',
-    components: { App,Registration,Welcome },
+    components: { App,RegistrationStudent,RegistrationTeacher,Welcome },
     router,
     store
 }).$mount('#app');
@@ -145,9 +150,23 @@ var that = this
 firebase.auth().onAuthStateChanged(function(user){
     if(user){
         firebase.database().ref('users/'+user.uid).once('value', (snapshot)=>{
-            if (!snapshot.val()){
-                awesome.debug('info','main.js','New User')
-                router.push('/registration')
+            awesome.debug('servere','main.js','User login info',store.state.loginType)
+            if(!snapshot.val()){
+                switch(store.state.loginType){
+                    case 'student':
+                        awesome.debug('info','main.js','Student type login')
+                        router.push('/registration-student')
+                    break;
+                    case 'teacher':
+                        awesome.debug('info','main.js','Teacher type login')
+                        router.push('/registration-teacher')
+                    break;
+                    default:
+                        awesome.debug('servere','main.js','No login type info')
+                        router.push('/')
+                        firebase.auth().signOut()
+                    break;
+                }
             } else {
                 router.push('/app')
             }
