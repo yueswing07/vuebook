@@ -99,6 +99,7 @@
     ul li {
         display: inline-block;
         width: 100px;
+        position: relative;
     }
     ul li input{
         position: absolute;
