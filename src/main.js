@@ -40,12 +40,10 @@ const store = new Vuex.Store({
         validUser: '',
         missingTimes: '',
         events: '',
-        selectedStudent: ''
+        selectedStudent: '',
+        gradelist: ''
     },
     mutations: {
-        increment(state) {
-            state.count++
-        },
         setUser(state, user){
             state.loggedInUser = user
         },
@@ -71,6 +69,9 @@ const store = new Vuex.Store({
         },
         setSelectedStudent(state, student) {
             state.selectedStudent = student
+        },
+        setGradelist(state, grades){
+            state.gradelist = grades
         },
         updateMissingTime(state, singleTime) {
             if (!singleTime.uid) {

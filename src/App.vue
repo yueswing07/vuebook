@@ -28,6 +28,13 @@
             <p>Ausgewählter Schüler: {{selectedStudentWatch.name}}</p>  
           </div>
         </div>
+        <!-- Grades -->
+        <div class='row'>
+          <div class='col-md-12'>
+            <grades></grades> 
+          </div>
+        </div>
+        <!-- Grades -->
         <!-- Missing Times -->
         <div class='row'>
           <div class='col-md-12'>
@@ -57,6 +64,7 @@ import test from './components/test'
 import missingtimes from './components/MissingTime'
 import userevents from './components/Events'
 import login from './components/Login'
+import grades from './components/Grades'
 /* Other stuff */
 import firebase from 'firebase'
 import awesome from './awesomeDebug'
@@ -100,6 +108,9 @@ export default {
       firebase.database().ref('users/'+this.$store.state.selectedStudent.uid+'/events').on('value', function(snapshot){
         that.$store.commit('setEventList',snapshot.val())
       })
+      firebase.database().ref('users/'+this.$store.state.selectedStudent.uid+'/grades').on('value', function(snapshot){
+        that.$store.commit('setGradelist',snapshot.val())
+      })
       return this.$store.state.selectedStudent
     }
 
@@ -108,7 +119,8 @@ export default {
     test,
     missingtimes,
     userevents,
-    login
+    login,
+    grades
   },  
 }
 </script>
