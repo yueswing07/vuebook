@@ -1,21 +1,25 @@
-# vuebook
+# Digitales Klassenbuch
+---
+[Link zum Projekt](https://vuebook-5e6cf.firebaseapp.com/#/)
 
-> A Vue.js project
+# Verwendete Technologien
+## Vue
+[Homepage](https://vuejs.org/)
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
+## Firebase
+[Firebase](https://firebase.google.com/) <br>
+Hierbei handlet es sich um einen von Google bereitgestellten Dienst für Hosting, Datenbank, Benutzerverwaltung, Speicherplatz und einiges mehr.
+### Datenbank
+Bei der Datenbank handelt es sich im eine No-SQL Datenbank im JSON Format.
+```json
+user: {
+   name: Tobias Stosius,
+   
+}
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## NPM
+[Firebase](https://firebase.google.com/)
+## Git
+[Git](https://firebase.google.com/)
+## VSCode
+[VSCode](https://firebase.google.com/)
