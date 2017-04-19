@@ -1,0 +1,13 @@
+Funktionsumfang
+###############
+
+Für ein **MVP** (Minimal Viable Product) musste zunächst herausgefunden werden, was ein Klassenbuch in der Minimalform ausmacht,
+also welche Funktionen unerlässlich sind um das Produkt sinnvoll nutzen zu können. Dies waren die Anforderungen die unser Programm
+ebenfalls bieten muss um überhaupt mit einem normalen Klassenbuch konkurrieren zu können.
+
+Alle weiteren Funktionen die eingebaut werden, können als zusätzliche Features angeführt werden. Diese dienen dann aber *nur* der Quality of Life.
+
+Im Verlauf der Programmierung, zumindest nach Erfüllung der Anforderungen für das MVP können weitere Features implementiert werden. Dabei sollte man auf
+keinen Fall zu viel Einbauen und somit das Programm mit Funktionen überladen die den Endbenutzer in der Verwendung verunsichern. Allerdings liegt hier auch
+der große Vorteil einer digitalen Anwendung gegenüber eines klassichen Klassenbuchs, es lässt sich erweitern und an die Wünsche derer Anpassen, die jeden
+Tag mit dem Programm arbeiten.

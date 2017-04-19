@@ -1,0 +1,53 @@
+
+.. toctree::
+   :maxdepth: 2
+
+   Funktionsumfang
+
+*******
+Analyse
+*******
+
+Der erste Schritt zum erstellen der Anwendung war natürlich die Analyse, wie die bisherigen Klassenbücher aufgebaut sind und
+verwendet werden. Basierend auf den Ergebissen liesen sich einige Probleme feststellen die in der neuen Anwedung verbessert werden
+mussten damit die Anwendung eine 'Exsistenzberechtigung' besitzt.
+
+Vorteile
+########
+
+Kommen wir zunächst zu den Vorteilen eines *normalen* Klassenbuchs. Der wahrscheinlich größte Pluspunkt ist, dass es ohne Internetverbindung verwendet werden kann.
+Die Lehrkräfte können somit zu jeder Zeit Einträge erstellen, bearbeiten oder streichen. Des weiteren entstehen keine Wartezeiten bis *die Anwendung* bereit ist.
+An Schulen die keine Gebäudeweite Wlan Abdeckung haben, ist somit das alte Klassenbuch klar im Vorteil, da für eine Internet basierte Anwedung erst die nötige
+Infrastruktur geschaffen werden muss.
+
+Nachteile
+#########
+
+Der größte Vorteil eines normalen Klassenbuchs ist gleichzeitig sein größter Nachteil. Es ist immer nur an einem Platz verfügbar, sollte eine Lehrkraft das Klassenbuch
+verlegt haben, oder ein Schüler hat es mitgenommen, besteht keine Möglichkeit Einträge zu erstellen. Somit muss ein Klassenbuch immer und überall zur Verfügung stehen.
+Dies lässt sich mit einer Web basierten Lösung sehr einfach erzielen, bei diesem Lösungsansatz lassen sich sogar erweiterte Richtlinien erstellen, beispielsweise das nur Personen aus
+einem bestimmten Netzwerk die Anwendung aufrufen können.
+
+Eine Onlinelösung bietet, richtig umgesetzt, die Möglichkeit der Kollaboration. Somit können mehrere Personen die Anwendung gleichzeitig und von verschiedenen Orten aus verwenden.
+Für dieses Projekt kam eine Echtzeitdatenbank zum Einsatz, Änderungen die ein Benutzer schreibt kann ein anderer sofort bei sich sehen, somit sind immer alle Anwender auf dem gleichen
+Wissensstand.
+
+Ein weiterer Nachteil eines herkömmlichen Klassenbuchs ist die Fälschungssicherheit. Eine unbefugte Person kann problemlos Einträge manipulieren, was oft im nachhinein nichtmehr
+nachvollzogen werden kann. Informationen werden somit nicht persistent gespeichert.
+
+Bei der Thematik der Datenspeicherung ergibt sich ein fast noch gravierenderes Problem als die Manipulation der Daten, das Speichern eben jener über einen längeren Zeitraum.
+Sollte ein Klassenbuch zerstört werden (Wasserschaden, Feuer, Verlust) lassen sich die Daten nicht wiederherstellen.
+
+Außerdem haben die Schüler kaum, bzw. Schwierig Einblick in ihre persönlichen Daten wie Fehlzeiten. Es besteht ebenfalls keine Möglichkeit die persönlichen Informationen zwischen
+den Schülern geheim zu halten. Möchte ein Schüler seine Fehlzeiten erfahren muss er entweder vor oder nach dem Unterricht die Lehrkraft ansprechen, würde er selbsständig seine
+Fehlzeiten nachschauen wollen hat er die Möglichkeit auch die seiner Mitschüler zu lesen.
+
+Zusammenfassung
+###############
+
+Weder eine Onlinelösung, noch die bisherigen Klassenbücher bieten eine ideale Lösung. Die Anforderungen an ein MVP sind nicht besonders hoch, es lassen sich allerdings eine Menge
+Features einbauen die die Verwendung einer digitalen Lösung wesentlich vereinfachen und einiges an Kompfort für Lehrer und Schüler bieten. Sicherlich ist der Gesichtspunkt des
+Internetzzwangs nicht außer Acht zu lassen, allerdings muss bei einem herkömmlichen Klassenbuch die physische Anwesenheit garantiert werden.
+
+Klare Vorteile einer digitalen Lösung ergeben sich in den Bereichen der Datensicherung und deren Persistenz durch Benutzerverwaltung sowie dem Schutz der persönlichen Daten eines
+jeden Schülers. Die Vielzahl an Möglichkeiten eine Anwedung zu erweitern kann ebenfalls ein großer Einflussfaktor zugunsten der digitalen Lösung sein.
