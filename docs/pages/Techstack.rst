@@ -29,7 +29,9 @@ Vorstellung der Techs
 
 Bootstrap
 ---------
-
+.. image:: https://logo-png.com/logos/bootstrap-logo.png
+   :width: 75px
+   :height: 75px
 Hierbei handelt es sich um ein Framework zum erstellen von Responsiven Webseiten. Bootstrap arbeitet auf CSS und Javascript Ebene und wird über CSS Klassen eingebunden. Eine Webseite die das Bootstrap Grid Layout verwendet, wird in eine bestimmte Anzahl Spalten unterteilt (Standardmäßig 12 Stück).
 
 Über CSS Klassen kann dann definiert werden, wie viele dieser Spalten das Element bei welcher Breite des Browserfensters einnehmen darf. Ein Element kann in einem breiten Fenster (Desktop) zwei Spalten einnehmen um dann bei einem kleinen Viewport wie dem eines Smartphones auf zwölf Spalten zu expandieren und andere Elemente zu verschieben.
@@ -53,5 +55,6 @@ Das von Google bereitgestellte Firebase ist eine Sammlung verschiedener Dienste.
 
 Somit bildet Firebase das Rückgrad der Anwendung im Bereich der Daten und des Hostings. Bis zu einer bestimmten Nutzungsgrenze kann der Dienst kostenlos verwendet werden. Bei der Datenbank handelt es sich um eine Echtzeitdatenbank im No-SQl Format, die Daten werden als JSON Objekte erstellt.
 
-Die Benutzerverwaltung 
-  
+Firebase bietet über eine API die Möglichkeit Benutzer auf verschiedene Wege zu authentifizieren, beispielsweise über den Google Account, Facebook, Twitter oder Github. Auch können anonyme Anmeldungen erlaubt werden sowie die Eingabe eigener Benutzerdaten. Diese persönlichen Informationen werden nicht in der Datenbank abgelegt sondern sind entweder über die API oder das Firebase Backend erreichbar.
+
+Weiterhin bietet Firebase eine Vielzahl an Analyse und Konfigurationsmöglichkeiten. So lassen sich mit einfachsten mitteln Google Analytics einbinden um nachvollziehen zu können, wie populär die Anwendung ist und welche Bereich dabei besonders herausstechen. Ebenfalls vorhanden ist eine AdMob Einbindung um Webung anzuzeigen.
