@@ -71,4 +71,35 @@ Zwar ist die Einarbeitung in ein komplettes Framework sehr zeitintensiv, allerdi
 
 Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und bietet die Möglichkeit eines schnellen Einstiegs.
 
-Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien 
+Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar. In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden. Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem 'Eltern' Element oder global mit beliebig anderen Komponeten Daten austauschen können.
+
+Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden.
+
+.. highlight:: html
+
+  <template>
+    <div class="wrapper container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Noten Übersicht</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class='gradestable'>
+                    <thead>
+                        <td v-for='subject in gradesObserv'>{{subject.name}}</td>
+                    </thead>
+                    <tbody>
+                        <td v-for='subject in gradesObserv' class='gradestable-body-item'>
+                            <span>Note {{subject.grade}}</span>
+                            <tr><input type="text" class='gradeInput' :ref='createRef(subject.name)' placeholder='Neu' @keyup='gradechange(subject.name)'></tr>
+                        </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+
