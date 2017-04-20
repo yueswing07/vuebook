@@ -5,8 +5,10 @@ import Vuex from 'Vuex'
 import VueRouter from 'vue-router'
 
 import App from './App'
-import RegistrationStudent from './Registration.vue'
-import RegistrationTeacher from './RegistrationTeacher'
+import RegistrationStudent from './pages/Registration.vue'
+import RegistrationTeacher from './pages/RegistrationTeacher'
+import DashboardStudent from './pages/DashboardStudent.vue'
+import DashboardTeacher from './pages/DashboardTeacher.vue'
 import Welcome from './Welcome.vue'
 
 import Helper from './FBHelper'
@@ -32,6 +34,8 @@ const routes = [
     { path: '/', component: Welcome },
     { path: '/registration-student', component: RegistrationStudent },
     { path: '/registration-teacher', component: RegistrationTeacher },
+    { path: '/dashboard-student', component: DashboardStudent },
+    { path: '/dashboard-teacher', component: DashboardTeacher },
     { path: '/app', component: App },
 ]
 const router = new VueRouter({
@@ -168,7 +172,21 @@ firebase.auth().onAuthStateChanged(function(user){
                     break;
                 }
             } else {
-                router.push('/app')
+                switch(store.state.loginType){
+                    case 'student':
+                        awesome.debug('info','main.js','Student type login')
+                        router.push('/dashboard-student')
+                    break;
+                    case 'teacher':
+                        awesome.debug('info','main.js','Teacher type login')
+                        router.push('/dashboard-teacher')
+                    break;
+                    default:
+                        awesome.debug('servere','main.js','No login type info')
+                        router.push('/')
+                        firebase.auth().signOut()
+                    break;
+                }
             }
         })
         store.commit('setUser',user)
