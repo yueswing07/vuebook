@@ -7,6 +7,7 @@
    :maxdepth: 5
 
    pages/Analyse
+   pages/Technologie
 
 *********************
 Digitales Klassenbuch
