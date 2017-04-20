@@ -8,6 +8,7 @@
 
    pages/Analyse
    pages/Technologie
+   pages/Techstack
 
 *********************
 Digitales Klassenbuch
