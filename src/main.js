@@ -68,7 +68,7 @@ const store = new Vuex.Store({
             }
         },
         logoutUser(state){
-            state.loggedInUser = null
+            store.commit('setUser', null)
             router.push('/')
             firebase.auth().signOut()
         },
