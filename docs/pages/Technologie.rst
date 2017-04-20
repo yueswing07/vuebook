@@ -36,3 +36,10 @@ Solche und ähnliche Probleme lassen sich mit einer Versionsverwaltung lösen. J
 
 In diesem Projekt kam die Versionsverwaltung *Git* zum Einsatz.
 
+Firebase
+########
+
+Eine Grundlage unseres Projekts ist die Speicherung der Daten und der schnelle Zugriff auf diese. Um das zu Erreichen nutzn wir Firebase. Außerdem muss unsere Seite gehostet werden, was auch durch Firebase verwirklicht wird.
+
+Firebase ist eine Platform zum mit Werkzeugen zum Erstellen von Webseiten und Android Apps. Es bietet viele Funktionen und Möglichkeiten, wie eine echtzeit-fähige No-SQL Datenbank, das Hosten einer Webseite und das schnelle Einbinden verschiedener Login Möglichkeiten.
+
