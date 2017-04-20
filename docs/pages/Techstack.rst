@@ -26,3 +26,32 @@ enger mit einander arbeiten um so zum einen die Qualität der Anwendung zu erhö
 
 Vorstellung der Techs
 #####################
+
+Bootstrap
+---------
+
+Hierbei handelt es sich um ein Framework zum erstellen von Responsiven Webseiten. Bootstrap arbeitet auf CSS und Javascript Ebene und wird über CSS Klassen eingebunden. Eine Webseite die das Bootstrap Grid Layout verwendet, wird in eine bestimmte Anzahl Spalten unterteilt (Standardmäßig 12 Stück).
+
+Über CSS Klassen kann dann definiert werden, wie viele dieser Spalten das Element bei welcher Breite des Browserfensters einnehmen darf. Ein Element kann in einem breiten Fenster (Desktop) zwei Spalten einnehmen um dann bei einem kleinen Viewport wie dem eines Smartphones auf zwölf Spalten zu expandieren und andere Elemente zu verschieben.
+
+.. figure:: http://www.tutorialrepublic.com/lib/images/grid-system-illustration.jpg
+Bootstrap Grid Layout
+
+Firebase
+--------
+.. image:: https://lh3.googleusercontent.com/-whXBCDVxIto/Vz2Rsyz-UjI/AAAAAAAAiJc/UjvR-M2b9tY5SyKFkDY6Q_MbusEINRXkQ/w506-h750/Firebase_16-logo.png
+   :width: 75px
+   :height: 75px
+
+Das von Google bereitgestellte Firebase ist eine Sammlung verschiedener Dienste. Unter anderem darin enthalten sind
+
+* Datenbank
+* Benutzerverwaltung
+* Analytics
+* Storage
+* Hosting
+
+Somit bildet Firebase das Rückgrad der Anwendung im Bereich der Daten und des Hostings. Bis zu einer bestimmten Nutzungsgrenze kann der Dienst kostenlos verwendet werden. Bei der Datenbank handelt es sich um eine Echtzeitdatenbank im No-SQl Format, die Daten werden als JSON Objekte erstellt.
+
+Die Benutzerverwaltung 
+  
