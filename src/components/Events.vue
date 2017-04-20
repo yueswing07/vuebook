@@ -9,7 +9,7 @@
     <div class="col-md-12">
       <ul name="userEvent_list" id="userEvent_list">
         <li v-for='userEvent in eventsObserv' @click='userEventSelected(userEvent)'>
-          <span class='delete_item' @click='removeUserEvent()'>X</span>
+          <span class='delete_item' @click='removeUserEvent()' v-if='$store.state.loginType==="teacher" '>X</span>
           <span class='user_event_element'>Datum: {{userEvent.date}}</span>
           <span class='user_event_element'>Uhrzeit: {{userEvent.time}}</span>
           <span class='user_event_element'>Beschreibung: {{userEvent.description}}</span>
@@ -17,7 +17,7 @@
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row" v-if='$store.state.loginType==="teacher" '>
     <div class="col-md-12">
       <input type="date" id='userEvent_edit_date' v-model='selectedEvent_date'>
       <input type="text" id='userEvent_edit_description' placeholder='Grund' v-model='selectedEvent_description'>
@@ -25,7 +25,7 @@
       <input type="button" id='userEvent_edit_send' class='btn btn-warning' @click='updateUserEvent()' value='Bearbeitung abschliesen'>
     </div>
   </div>
-  <div class="row">
+  <div class="row" v-if='$store.state.loginType==="teacher" '>
     <div class="col-md-12">
       <input type="date" id='userEvent_edit_date' v-model='newEvent_date'>
       <input type="text" id='userEvent_edit_description' placeholder='Grund' v-model='newEvent_description'>

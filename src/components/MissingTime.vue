@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <ul name="missing_times" id="missing_times">
                     <li v-for='missingTime in timesObserv' @click='missingTimeSelected(missingTime)'>
-                        <span class='delete_item' @click='removeMissingTime()'>X</span>
+                        <span class='delete_item' @click='removeMissingTime()' v-if='$store.state.loggedInUser==="teacher" '>X</span>
                         <span class='missing_time_element'>Datum: {{missingTime.date}}</span>
                         <span class='missing_time_element'>Dauer: {{missingTime.duration}}</span>
                         <span class='missing_time_element'>Stunde: {{missingTime.lesson}}</span>
@@ -23,7 +23,7 @@
                 </ul>
             </div>
         </div>
-        <div class="row">
+        <div class="row" v-if='$store.state.loginType==="teacher" '>
             <div class="col-md-12">
                 <input type="date" id='missingTime_edit_date' v-model='selectedTime_date'>
                 <input type="text" id='missingTime_edit_description' placeholder='Grund' v-model='selectedTime_description'>
@@ -32,7 +32,7 @@
                 <input type="button" id='missingTime_edit_send' class='btn btn-warning' @click='updateMissingTime()' value='Bearbeitung abschliesen'>
             </div>
         </div>
-        <div class="row">
+        <div class="row" v-if='$store.state.loginType==="teacher" '>
             <div class="col-md-12">
                 <input type="date" id='missingTime_edit_date' v-model='newTime_date'>
                 <input type="text" id='missingTime_edit_description' placeholder='Grund' v-model='newTime_description'>
