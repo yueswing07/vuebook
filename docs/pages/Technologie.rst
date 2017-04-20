@@ -30,5 +30,9 @@ Stärke ist die Community hinter jedem Tool, da diese für Erweiterungen der Sta
 Versionsverwaltung
 ##################
 
+Arbeiten mehrer Personen getrennt an ein und dem selben Projekt tritt schnell der Fall ein, dass eine Datei von mehreren Personen gleichzeitig bearbeitet wird. Auch kann es vorkommen, dass die Änderungen von einer Person ungewünschtes Verhalten im Code von einem anderen Kollborator auslöst.
 
+Solche und ähnliche Probleme lassen sich mit einer Versionsverwaltung lösen. Jeder der an dem Projekt arbeitet kann jederzeit seine Änderungen commiten, sollten beim Übernehmen der Änderungen diskripanzen entstehen muss sich der jeweilige Benutzer selber darum kümmern diese zu lösen, erst dann wird der Code übernommen.
+
+In diesem Projekt kam die Versionsverwaltung *Git* zum Einsatz.
 
