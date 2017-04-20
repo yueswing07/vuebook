@@ -70,3 +70,5 @@ Webseiten lassen sich nur über Javascript dynamisch verändern, entweder über 
 Zwar ist die Einarbeitung in ein komplettes Framework sehr zeitintensiv, allerdings holt man oft während der Umsetzung die Zeit wieder rein da sich Funktionen wesentlich schneller umsetzten lassen.
 
 Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und bietet die Möglichkeit eines schnellen Einstiegs.
+
+Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien 
