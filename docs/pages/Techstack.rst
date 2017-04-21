@@ -83,5 +83,17 @@ Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und 
    
    Ausschnitt einer Vue Datei
  
+ Router
+ ~~~~~~
+ 
+Eines der vielen Features die Vue mitbringt ist das *routing*, also das weiterleiten des Anwenders durch die Applikation. Die Besonderheit dabei ist, dass beim Aufruf der Webseite nur die index.html gesendet wird, es gibt somit keine Unterseiten die der Webserver verarbeiten könnte.
+
+.. figure:: http://i.imgur.com/H5KLVPZ.png
+   :width: 500px
+   
+   Angeben der Routen für Vue
+   
+Auf dem oberen Bild ist zu sehen, welche Routen Vue kennt. Die Angabe *pfad* bezieht sich dabei auf die URL die im Browser angezeigt wird, der *component* Teil gibt an, welche der Komponenten gerendert werden soll. Natürlich kann jede dieser Komponenten untergeordnete Komponenten enthalten.
+Wichtig ist, zu prüfen ob der Benutzer beim Aufruf der Seite angemeldet ist oder nicht.
  
 
