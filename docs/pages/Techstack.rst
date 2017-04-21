@@ -127,18 +127,26 @@ Vue
 
    VueJS Logo
 
-Webseiten lassen sich nur über Javascript dynamisch verändern, entweder über natives JS oder mithilfe einer Libary wie JQuery. Für kleine Änderungen reicht es zumeist aus JQuery zu verwenden. Bei einer komplexen Anwendung wie dieser wäre man länger damit beschäftigt Funktionen zu schreiben um das HTML zu updaten als mit der eigentlichen Programmlogik. Gemäß dem Satz man solle das Rad nicht immer neu erfinden macht es an dieser Stelle sind ein Framework zu verwenden um das HTML zu verändern.
-
+Webseiten lassen sich nur über Javascript dynamisch verändern, entweder über natives JS oder mithilfe einer Libary wie JQuery. Für kleine Änderungen reicht es zumeist aus
+JQuery zu verwenden. Bei einer komplexen Anwendung wie dieser wäre man länger damit beschäftigt Funktionen zu schreiben um das HTML zu updaten als mit der eigentlichen Programmlogik. 
+Gemäß dem Satz man solle das Rad nicht immer neu erfinden macht es an dieser Stelle sind ein Framework zu verwenden um das HTML zu verändern.
 Zwar ist die Einarbeitung in ein komplettes Framework sehr zeitintensiv, allerdings holt man oft während der Umsetzung die Zeit wieder rein da sich Funktionen wesentlich schneller umsetzten lassen.
+Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und 
+bietet die Möglichkeit eines schnellen Einstiegs.
 
-Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und bietet die Möglichkeit eines schnellen Einstiegs.
+.. _my-reference-components:
 
 Components
 ~~~~~~~~~~
 
-Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar. In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden. Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem 'Eltern' Element oder global mit beliebig anderen Komponeten Daten austauschen können.
+Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar. 
+In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden. 
+Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem 'Eltern' Element oder global mit beliebig anderen Komponeten Daten austauschen können.
 
-Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden. So lassen sich beispielsweise for-Schleifen oder if-Abfagen verwenden um bestimmte Elemente basierend auf Variablen die im *script* Teil der Komponente definiert wurden. Sobald sich der Inhalt einer Variable verändert, kümmert Vue sich im Hintergrund darum das Html neu zu rendern. Die Seite muss dabei nicht neu geladen werden.
+Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei 
+mit Vue Elementen versehen um Logik abzubilden. So lassen sich beispielsweise for-Schleifen oder if-Abfagen verwenden um bestimmte Elemente basierend 
+auf Variablen die im *script* Teil der Komponente definiert wurden. Sobald sich der Inhalt einer Variable verändert, kümmert Vue sich im Hintergrund darum das Html neu zu rendern. 
+Die Seite muss dabei nicht neu geladen werden.
 
 .. figure:: http://i.imgur.com/pHKxeyt.png
    :width: 500px
@@ -159,6 +167,7 @@ Für das Routing in Vue sind zwei Angaben wichtig, der **Pfad** in Form der URL 
 Wie oben zu sehen, gibt es vier Routen. Jeweils zwei für Lehrkräfte und zwei für Schüler, je nach dem was in der URL steht wird die entsprechend angegebene Komponente
 angezeigt. Wichtig ist, zu überprüfen ob ein Benutzer die jeweilige Seite aufrufen darf, oder ob eine Anmeldung erfolgen muss.
  
+.. _my-reference-store:
 
 Store
 ~~~~~

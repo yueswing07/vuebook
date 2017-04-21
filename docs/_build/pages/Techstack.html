@@ -36,6 +36,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Digitales Klassenbuch release documentation" href="../index.html"/>
+        <link rel="next" title="Aufbau" href="Aufbau.html"/>
         <link rel="prev" title="Technologien" href="Technologie.html"/> 
 
   
@@ -112,6 +113,19 @@
 <li class="toctree-l4"><a class="reference internal" href="#store">Store</a></li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Aufbau.html">Aufbau</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Aufbau.html#initialisierung">initialisierung</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Aufbau.html#firebase">Firebase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Aufbau.html#vue-komponenten">Vue Komponenten</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Aufbau.html#vue-startet">Vue startet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Aufbau.html#eine-komponente-im-detail">Eine Komponente im Detail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Aufbau.html#virtueller-dom">Virtueller DOM</a></li>
 </ul>
 </li>
 </ul>
@@ -276,13 +290,21 @@ und andere Elemente zu verschieben.</p>
 <a class="reference internal image-reference" href="https://vuejs.org/images/logo.png"><img alt="https://vuejs.org/images/logo.png" src="https://vuejs.org/images/logo.png" style="width: 75px; height: 75px;" /></a>
 <p class="caption"><span class="caption-text">VueJS Logo</span></p>
 </div>
-<p>Webseiten lassen sich nur über Javascript dynamisch verändern, entweder über natives JS oder mithilfe einer Libary wie JQuery. Für kleine Änderungen reicht es zumeist aus JQuery zu verwenden. Bei einer komplexen Anwendung wie dieser wäre man länger damit beschäftigt Funktionen zu schreiben um das HTML zu updaten als mit der eigentlichen Programmlogik. Gemäß dem Satz man solle das Rad nicht immer neu erfinden macht es an dieser Stelle sind ein Framework zu verwenden um das HTML zu verändern.</p>
-<p>Zwar ist die Einarbeitung in ein komplettes Framework sehr zeitintensiv, allerdings holt man oft während der Umsetzung die Zeit wieder rein da sich Funktionen wesentlich schneller umsetzten lassen.</p>
-<p>Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und bietet die Möglichkeit eines schnellen Einstiegs.</p>
+<p>Webseiten lassen sich nur über Javascript dynamisch verändern, entweder über natives JS oder mithilfe einer Libary wie JQuery. Für kleine Änderungen reicht es zumeist aus
+JQuery zu verwenden. Bei einer komplexen Anwendung wie dieser wäre man länger damit beschäftigt Funktionen zu schreiben um das HTML zu updaten als mit der eigentlichen Programmlogik.
+Gemäß dem Satz man solle das Rad nicht immer neu erfinden macht es an dieser Stelle sind ein Framework zu verwenden um das HTML zu verändern.
+Zwar ist die Einarbeitung in ein komplettes Framework sehr zeitintensiv, allerdings holt man oft während der Umsetzung die Zeit wieder rein da sich Funktionen wesentlich schneller umsetzten lassen.
+Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und
+bietet die Möglichkeit eines schnellen Einstiegs.</p>
 <div class="section" id="components">
-<h4>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h4>
-<p>Der Aufbau von Vue erfolgt in <em>Components</em>, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar. In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden. Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem &#8216;Eltern&#8217; Element oder global mit beliebig anderen Komponeten Daten austauschen können.</p>
-<p>Alle Komponenten bestehen aus drei Teilen, einem <em>template</em>, einem <em>script</em> und einem <em>style</em>. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden. So lassen sich beispielsweise for-Schleifen oder if-Abfagen verwenden um bestimmte Elemente basierend auf Variablen die im <em>script</em> Teil der Komponente definiert wurden. Sobald sich der Inhalt einer Variable verändert, kümmert Vue sich im Hintergrund darum das Html neu zu rendern. Die Seite muss dabei nicht neu geladen werden.</p>
+<span id="my-reference-components"></span><h4>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h4>
+<p>Der Aufbau von Vue erfolgt in <em>Components</em>, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar.
+In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden.
+Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem &#8216;Eltern&#8217; Element oder global mit beliebig anderen Komponeten Daten austauschen können.</p>
+<p>Alle Komponenten bestehen aus drei Teilen, einem <em>template</em>, einem <em>script</em> und einem <em>style</em>. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei
+mit Vue Elementen versehen um Logik abzubilden. So lassen sich beispielsweise for-Schleifen oder if-Abfagen verwenden um bestimmte Elemente basierend
+auf Variablen die im <em>script</em> Teil der Komponente definiert wurden. Sobald sich der Inhalt einer Variable verändert, kümmert Vue sich im Hintergrund darum das Html neu zu rendern.
+Die Seite muss dabei nicht neu geladen werden.</p>
 <div class="figure" id="id7">
 <a class="reference internal image-reference" href="http://i.imgur.com/pHKxeyt.png"><img alt="http://i.imgur.com/pHKxeyt.png" src="http://i.imgur.com/pHKxeyt.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">Ausschnitt einer Vue Datei</span></p>
@@ -300,7 +322,7 @@ Wie oben zu sehen, gibt es vier Routen. Jeweils zwei für Lehrkräfte und zwei f
 angezeigt. Wichtig ist, zu überprüfen ob ein Benutzer die jeweilige Seite aufrufen darf, oder ob eine Anmeldung erfolgen muss.</p>
 </div>
 <div class="section" id="store">
-<h4>Store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h4>
+<span id="my-reference-store"></span><h4>Store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h4>
 <p>In Vue kann man die weiter oben beschrieben Komponenten in Komponenten laden. So kann die Startseite Text beinhalten und einen Login Button, der Button ist Teil einer
 anderen Komponente die den Anmeldevorgang übernimmt. Man hat eine <em>Parent - Child</em> Beziehung, dabei ist die Startseite die <em>Parent</em> Komponente und der Login Button hat die
 Rolle des <em>Child</em> Elements.</p>
@@ -335,6 +357,8 @@ Sollte der Login erfolgreich sein, meldet dies die Button Komponente an den Stor
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Aufbau.html" class="btn btn-neutral float-right" title="Aufbau" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="Technologie.html" class="btn btn-neutral" title="Technologien" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

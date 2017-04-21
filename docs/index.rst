@@ -19,3 +19,4 @@ Entgegenwirken um es den Lehrern einfacher zu machen Schüler zu verwalten und d
    pages/Analyse
    pages/Technologie
    pages/Techstack
+   pages/Aufbau

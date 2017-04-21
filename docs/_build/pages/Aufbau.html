@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Aufbau &mdash; Digitales Klassenbuch release documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Digitales Klassenbuch release documentation" href="../index.html"/>
+        <link rel="prev" title="Techstack" href="Techstack.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Digitales Klassenbuch
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Analyse.html">Analyse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#funktionsumfang">Funktionsumfang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#vorteile">Vorteile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#nachteile">Nachteile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Technologie.html">Technologien</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#editor">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#versionsverwaltung">Versionsverwaltung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#npm">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#readthedocs-rtfm">ReadTheDocs (RTFM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Techstack.html">Techstack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Techstack.html#devops">DevOps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Techstack.html#webpack">Webpack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Techstack.html#babel">Babel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Techstack.html#anwedung-und-daten">Anwedung und Daten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Techstack.html#bootstrap">Bootstrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Techstack.html#firebase">Firebase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Techstack.html#vue">Vue</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Techstack.html#components">Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Techstack.html#router">Router</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Techstack.html#store">Store</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Aufbau</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initialisierung">initialisierung</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#firebase">Firebase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vue-komponenten">Vue Komponenten</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#vue-startet">Vue startet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eine-komponente-im-detail">Eine Komponente im Detail</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#virtueller-dom">Virtueller DOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#struktur">Struktur</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digitales Klassenbuch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Aufbau</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pages/Aufbau.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aufbau">
+<h1>Aufbau<a class="headerlink" href="#aufbau" title="Permalink to this headline">¶</a></h1>
+<p>In den anderen Abschnitten wurden die Tools und Frameworks vorgestellt die verwendet wurden um die Webanwendung zu erstellen.
+Dieser Teil beschreibt nun den Aufbau der Anwendung, von der Struktur des Quellcodes bis zum deployment.</p>
+<div class="section" id="initialisierung">
+<h2>initialisierung<a class="headerlink" href="#initialisierung" title="Permalink to this headline">¶</a></h2>
+<p>Die Anwendung nutzt den Firebase Dienst von Google um Daten zu speichern, Benutzer zu authentifizieren, zum Hosting und könnte zu einem späteren Zeitpunkt an die
+Analytics Schnittstelle angebunden werden um detaillierte Nutzungsinformationen zu sammeln.</p>
+<div class="section" id="firebase">
+<h3>Firebase<a class="headerlink" href="#firebase" title="Permalink to this headline">¶</a></h3>
+<p>Firebase wird über NPM in das Projekt eingebunden, auf der <em>main.js</em> wird ein Objekt initialisiert welches die Verbindung zur Firebase API aufbaut und die Anwendung dort
+authentifiziert um Zugriff auf die anderen Dienste zu erhalten. Jedes Projekt hat eine eigene Konfiguration welche eingebunden werden muss. Diese Einstellungen sollen nicht
+im Repository sichtbar sein, sondern über andere Wege der Anwendung zugeführt werden.</p>
+<div class="figure" id="id1">
+<img alt="http://imgur.com/T185IQj.png:width:100px:height:100px" src="http://imgur.com/T185IQj.png:width:100px:height:100px" />
+<p class="caption"><span class="caption-text">[1] Firebase initialisierung</span></p>
+</div>
+</div>
+<div class="section" id="vue-komponenten">
+<h3>Vue Komponenten<a class="headerlink" href="#vue-komponenten" title="Permalink to this headline">¶</a></h3>
+<p>Neben Firebase werden noch der Vue Router, Vue Bootstrap und Vuex benötigt. Der Router stellt dabei die Anwendungsinterne Weiterleitung zur Verfügung, das Bootstrap Modul ermöglicht
+die Verwendung der Bootstrap Klassen in den <em>template</em> Abschnitten und über Vuex wird der globale Store bereitgestellt. Im Anschluss daran werden die Module konfiguriert.</p>
+<p>Ein Beispiel für die Konfiguration des Router Objekts</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Welcome</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/registration-student&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">RegistrationStudent</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/registration-teacher&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">RegistrationTeacher</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/dashboard-student&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">DashboardStudent</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/dashboard-teacher&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">DashboardTeacher</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="n">path</span><span class="p">:</span> <span class="s1">&#39;/app&#39;</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">App</span> <span class="p">},</span>
+ <span class="p">]</span>
+ <span class="n">const</span> <span class="n">router</span> <span class="o">=</span> <span class="n">new</span> <span class="n">VueRouter</span><span class="p">({</span>
+  <span class="n">routes</span><span class="p">,</span>
+ <span class="p">})</span>
+</pre></div>
+</div>
+<p>Wesentlich komplexer gestaltet sich die Konfiguration des Vuex <a class="reference internal" href="Techstack.html#my-reference-store"><span class="std std-ref">Store</span></a>. Dieser bildet die zentrale Verwaltung der Variablen die in den einzelnen Komponeten verwendet werden.
+Außerdem bildet er die Schnittstelle zwischen der Anwendung und dem Aufruf von Firebase um beispielsweise Daten in die Datenbank zu schreiben. Die Tatsache, dass alle Komponenten
+auf Änderungen von Werten im Store reagieren können, war es möglich die Echtzeitdatenbank von Firebase voll zu nutzen und Daten in Echtzeit auf allen Geräten zu aktualisieren.</p>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="http://imgur.com/48luyWm.png"><img alt="http://imgur.com/48luyWm.png" src="http://imgur.com/48luyWm.png" style="width: 300px; height: 300px;" /></a>
+<p class="caption"><span class="caption-text">[2] Beispielhafte Funktion des Stores</span></p>
+</div>
+<p>Zwar besitzt der Store, wie oben zu sehen, <em>setter</em> Methoden allerdings keine <em>getter</em> da alle internen Werte public sind.</p>
+<p>Nach der Konfiguration aller Komponenten wird ein Vue Objekt erzeugt, diesem werden alle erstellen Komponenten zugewiesen.
+Im Anschluss daran wird ein Observer von Firebase genutzt um auf Änderungen des Login Statuses des Benutzer zu reagieren.</p>
+</div>
+</div>
+<div class="section" id="vue-startet">
+<h2>Vue startet<a class="headerlink" href="#vue-startet" title="Permalink to this headline">¶</a></h2>
+<p>Ist die Initialisierung abgeschlossen wird Vue über ein Html Element eingebunden welches ein ID Attribut gleich dem Wert des <em>el</em> Attributs im Vue Objekt besitzt.
+Sollte kein solches Element gefunden werden erhält man eine entsprechende Fehlermeldung. Bis zu diesem Schritt wurde noch keine <em>.vue</em> - Datei geladen, die
+Einbindung erfolgt in einer normalen Html Datei.
+Somit ist es möglich die Anwendung an einer bestimmten Stelle in einem bereits bestehenden Webauftritt ein zu bauen.</p>
+<div class="code html highlight-default"><div class="highlight"><pre><span></span>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;/div&gt;
+    &lt;!-- built files will be auto injected --&gt;
+&lt;/body&gt;
+</pre></div>
+</div>
+<p>Die Anwendung wird innerhalb des <em>div</em> Elements gerendert, dabei spielt der <em>router-view</em> Tag eine entscheidende Rolle. Dieser sorgt dafür, dass die Komponente gerendert wird
+die zur URL aus dem Vue Router Objekt passt.</p>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="http://imgur.com/fuUuNAj.png"><img alt="http://imgur.com/fuUuNAj.png" src="http://imgur.com/fuUuNAj.png" style="width: 300px;" /></a>
+<p class="caption"><span class="caption-text">[3] Starten von Vue und Rendern der Komponente</span></p>
+</div>
+</div>
+<div class="section" id="eine-komponente-im-detail">
+<h2>Eine Komponente im Detail<a class="headerlink" href="#eine-komponente-im-detail" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="virtueller-dom">
+<h3>Virtueller DOM<a class="headerlink" href="#virtueller-dom" title="Permalink to this headline">¶</a></h3>
+<p>Wurde Vue fehlerfrei initialisiert und für die aktuelle URL gibt es eine Komponente im Vue Router, wird diese geladen. Dazu erstellt Vue zunächst einen virtuellen DOM (Document Object Model)
+Vue arbeitet somit nicht direkt im Html und wählt Elemente beispielsweise über einen Klassen oder ID Selektor aus, sondern erstellt intern alle nötigen Elemente und bearbeitet sie
+auch intern. Erst wenn dieser Schritt fertig ist kümmert sich Vue um das Rendering.</p>
+<p>Diese Vorgehensweise bietet einen enormen Leistungsvorteil. Um auf einer großen Seite alle Elemente mit einer bestimmten Klasse zu verändern müsste über das gesamte DOM interriert werden
+und alle vorkommen würden einzeln bearbeitet werden. Dieser Vorgang müsste für jede Änderung der Elemente wiederholt werden. Selbst wenn die ID eines Elements verwendet werden kann,
+wird dieses am Ende der Webseite angezeigt, muss jedes vorhergehende Element überprüft werden. Dank seines virtuellen DOMs kann Vue die Daten intern besser strukturieren und somit den Aufwand wesentlich verkleinern.</p>
+</div>
+<div class="section" id="struktur">
+<h3>Struktur<a class="headerlink" href="#struktur" title="Permalink to this headline">¶</a></h3>
+<p>Wie unter <a class="reference internal" href="Techstack.html#my-reference-components"><span class="std std-ref">Components</span></a> beschrieben besteht eine Komponente aus drei Abschnitten, dem <em>template</em>, dem <em>script</em> und dem <em>style</em>.
+Im <strong>template</strong> werden neben normalen Html Elements spezielle Vue Anweisungen verwendet um Variablen anzuzeigen oder Schleifen zu durchlaufen.
+Anhand des Logins kann ein Teil der Funktionsweise einfach erklärt werden. Zunächst der Template Teil der <em>Welcome</em> Komponente. Diese wird, per Definition im Vue Router
+als Standardseite geladen.</p>
+<div class="code html highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span>
+     <span class="o">&lt;</span><span class="n">div</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;wrapper container&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">application</span><span class="o">&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Anmelden</span> <span class="n">als</span> <span class="n">Schüler</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">login</span> <span class="p">:</span><span class="n">loginType</span><span class="o">=</span><span class="s1">&#39;&quot;student&quot;&#39;</span><span class="o">&gt;&lt;/</span><span class="n">login</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">hr</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">h2</span><span class="o">&gt;</span><span class="n">Anmelden</span> <span class="n">als</span> <span class="n">Lehrkraft</span><span class="o">&lt;/</span><span class="n">h2</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">login</span> <span class="p">:</span><span class="n">loginType</span><span class="o">=</span><span class="s1">&#39;&quot;teacher&quot;&#39;</span><span class="o">&gt;&lt;/</span><span class="n">login</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="n">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">template</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Zu sehen sind neben normalen Html Tags zwei <em>login</em> tags, spezielle vom Entwickler angelegte Tags die eine weitere Komponente einbinden. Wir errinern uns: Eine Komponente kann
+Unterkomponenten haben die wiederung Unterkomponenten einbinden können. Innerhalb des login Tags erfolgt ein <em>data-binding</em>, der Variable <em>loginType</em> wird einmal der String
+<em>student</em> oder <em>teacher</em> übergeben. In beiden Fällen wird die Variable an die Login-Komponente weitergegben.</p>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="http://imgur.com/f1m6Wg9.png"><img alt="http://imgur.com/f1m6Wg9.png" src="http://imgur.com/f1m6Wg9.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">[4] Databinding</span></p>
+</div>
+<p>Nun ist die Variable &#8216;loginType&#8217; zwar in der <em>welcome.vue</em> definiert, allerdings kann die eingebundene <em>Login.vue</em> noch nichts mit diesem Wert anfangen. Ein so übergebener Wert
+muss erst in der Komponente bekannt gemacht werden.</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span>export default {
+    data(){
+        return {
+
+        }
+    },
+    props: [
+        &#39;loginType&#39;
+    ],
+    methods: {
+        login: function(providerName){
+            var loginInfos = {
+                &#39;providerName&#39;: providerName,
+                &#39;loginType&#39;: this.loginType
+            }
+            this.$store.commit(&#39;loginUser&#39;,loginInfos)
+        },
+    }
+}
+</pre></div>
+</div>
+<p>Im <em>script</em> Bereich einer Komponente werden Methoden definiert damit die Komponente Ihre zugedachte Aufgabe erfüllen kann. Ein Skript Bereich besteht aus mehreren Unterfunktionen.
+Der wichtigste Bereich der immer angegeben werden muss ist der <em>data()</em> Bereich, bzw. Die <em>data()</em> Methode. Um ein <em>binding</em> vorzunehmen muss die Variable des Eltern-Elements unter
+gleichem Namen im <em>props</em> Array angegeben werden. Innerhalb des <em>methods</em> Objekts werden alle Methoden aufgefürt die innerhalb der Komponente zur Verfügung stehen sollen. In diesem
+Fall gibt es eine Methode namens &#8216;login&#8217;. Diese wirde über ein Klick Event aufgerufen welches an einen Button angefügt wurde. An dieser Stelle wird zum ersten mal der Vuex Store
+aufgerufen, dem Aufruf werden Informationen zum Provider und der Art des Logins übergeben. In diesem Fall wird der Wert aus dem Eltern-Element übergeben.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Techstack.html" class="btn btn-neutral" title="Techstack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Tobias Stosius.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'release',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
