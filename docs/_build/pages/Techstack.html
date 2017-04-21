@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Techstack &mdash; Digitales Klassenbuch release documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Digitales Klassenbuch release documentation" href="../index.html"/>
+        <link rel="prev" title="Technologien" href="Technologie.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Digitales Klassenbuch
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Analyse.html">Analyse</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#funktionsumfang">Funktionsumfang</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#vorteile">Vorteile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#nachteile">Nachteile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Analyse.html#zusammenfassung">Zusammenfassung</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Technologie.html">Technologien</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#editor">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#versionsverwaltung">Versionsverwaltung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#npm">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Technologie.html#readthedocs-rtfm">ReadTheDocs (RTFM)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Techstack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#devops">DevOps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#webpack">Webpack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#babel">Babel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#anwedung-und-daten">Anwedung und Daten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bootstrap">Bootstrap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firebase">Firebase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vue">Vue</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#components">Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#router">Router</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#store">Store</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Digitales Klassenbuch</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Techstack</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/pages/Techstack.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="techstack">
+<h1>Techstack<a class="headerlink" href="#techstack" title="Permalink to this headline">¶</a></h1>
+<a class="reference external image-reference" href="https://stackshare.io/bfia5f/vuebook"><img alt="Coverage Status" src="https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat" /></a>
+<p>Als TechStack bezeichnet man einen Sammlung von Tools/Programmen die für die Umsetzung und Wartung einer Anwedung verwendet werden.
+Ein Stack lässt sich in verschiedene Segmente unterteilen, in diesem Fall kommen Tools aus dem DevOps Bereich und dem Anwendungs/Daten Bereich zum Einsatz.
+Dabei spielt der DevOps Bereich eine eher passive Rolle wohingegen der Anwendungsbereich aktiv beim Entwickeln unterstützt, beispielsweise zählen Frameworks
+zum Anwendungsbereich und stellen Funktionen zur Verfügung um schnell und einfach eine Anwendung aufzubauen.</p>
+<div class="section" id="devops">
+<h2>DevOps<a class="headerlink" href="#devops" title="Permalink to this headline">¶</a></h2>
+<p>DevOps beschreibt den Ansatz Prozesse zu verbessern. Dabei sollen die Bereiche <strong>Dev</strong> für Development und <strong>Ops</strong> für Operations
+enger mit einander arbeiten um so zum einen die Qualität der Anwendung zu erhöhen, gleichzeitig jedoch für eine schnellere Entwicklung und Auslieferung sorgen.</p>
+<div class="section" id="webpack">
+<span id="my-reference-label"></span><h3>Webpack<a class="headerlink" href="#webpack" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id1">
+<a class="reference internal image-reference" href="https://severallevels.io/wp-content/uploads/2016/06/webpack.png"><img alt="https://severallevels.io/wp-content/uploads/2016/06/webpack.png" src="https://severallevels.io/wp-content/uploads/2016/06/webpack.png" style="width: 75px; height: 75px;" /></a>
+<p class="caption"><span class="caption-text">Webpack Logo</span></p>
+</div>
+<p>Webpack ist <em>bundler</em> für Websprachen. Mittels dieses Tools kann beispielsweise Javascript in verschiedene Dateien ausgelagert werden und an bestimmten Stellen eingebunden werden.
+Somit ist es möglich Code wieder zu verwenden ohne in von Hand an die richtige Stelle kopieren zu müssen. Später wenn die Webanwendung deployt wird, kümmert sich Webpack um den
+korrekten Zusammenbau der Dateien.</p>
+<p>Dieser Schritt wird benötigt, da Browser nicht in der Lage sind <em>require</em> Anweisungen zu verarbeiten. Module wie <em>CommonJS</em> oder <em>RequireJS</em> ermöglichen es für die lokale Entwicklung
+solche Anweisungen zu verwenden, da Vue Anwendungen später im Browser laufen stehen diese Module nicht mehr zur Verfügung. Webpack kümmert sich darum die Abhängigkeiten auf zu lösen
+und ist somit ein essentieller Bestandteil vieler moderner Webanwendungen.</p>
+</div>
+<div class="section" id="babel">
+<h3>Babel<a class="headerlink" href="#babel" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id2">
+<a class="reference internal image-reference" href="https://raw.githubusercontent.com/babel/logo/master/babel.png"><img alt="https://raw.githubusercontent.com/babel/logo/master/babel.png" src="https://raw.githubusercontent.com/babel/logo/master/babel.png" style="width: 75px; height: 75px;" /></a>
+<p class="caption"><span class="caption-text">Babel Logo</span></p>
+</div>
+<p>Bei Babel handelt es sich um einen Javascript compiler. Dieser ermöglicht es die neuste ES6+ Javascript Schreibweise zu benutzen, obwohl diese noch nicht (zum Zeitpunkt des schreibens)
+von Browsern unterstützt wird.</p>
+<p>Der folgende Code ist in ES6 geschrieben, der modernen Version von Javascript. Viele oft benötigte Funktionen haben eine stark vereinfachte Schreibweise und sind
+dennoch sehr leserlich.</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">functions</span>
+<span class="n">myParameter</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">myParamter</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="o">//</span> <span class="n">Something</span> <span class="n">more</span> <span class="n">advanced</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">n</span> <span class="o">=&gt;</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Babel sorgt nun dafür, dass der oben geschriebene Code in für aktuelle Browser konformes es2015 konvertiert wird.</p>
+<div class="code javascript highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">normal</span> <span class="n">JS</span> <span class="n">function</span>
+<span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">myParameter</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">console</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">myParamter</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="o">//</span> <span class="n">The</span> <span class="n">advanced</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">es2015</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">function</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+ <span class="k">return</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="anwedung-und-daten">
+<h2>Anwedung und Daten<a class="headerlink" href="#anwedung-und-daten" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bootstrap">
+<h3>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="https://logo-png.com/logos/bootstrap-logo.png"><img alt="https://logo-png.com/logos/bootstrap-logo.png" src="https://logo-png.com/logos/bootstrap-logo.png" style="width: 75px; height: 75px;" /></a>
+<p class="caption"><span class="caption-text">Bootstrap Logo</span></p>
+</div>
+<p>Hierbei handelt es sich um ein Framework zum erstellen von Responsiven Webseiten. Bootstrap arbeitet auf CSS und Javascript Ebene und wird über CSS Klassen eingebunden.
+Eine Webseite die das Bootstrap Grid Layout verwendet, wird in eine bestimmte Anzahl Spalten unterteilt (Standardmäßig 12 Stück).</p>
+<p>Über CSS Klassen kann dann definiert werden, wie viele dieser Spalten das Element bei welcher Breite des Browserfensters einnehmen darf.
+Ein Element kann in einem breiten Fenster (Desktop) zwei Spalten einnehmen um dann bei einem kleinen Viewport wie dem eines Smartphones auf zwölf Spalten zu expandieren
+und andere Elemente zu verschieben.</p>
+<div class="figure" id="id4">
+<img alt="http://www.tutorialrepublic.com/lib/images/grid-system-illustration.jpg" src="http://www.tutorialrepublic.com/lib/images/grid-system-illustration.jpg" />
+<p class="caption"><span class="caption-text">Bootstrap Grid Layout</span></p>
+</div>
+</div>
+<div class="section" id="firebase">
+<h3>Firebase<a class="headerlink" href="#firebase" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="https://lh3.googleusercontent.com/-whXBCDVxIto/Vz2Rsyz-UjI/AAAAAAAAiJc/UjvR-M2b9tY5SyKFkDY6Q_MbusEINRXkQ/w506-h750/Firebase_16-logo.png"><img alt="https://lh3.googleusercontent.com/-whXBCDVxIto/Vz2Rsyz-UjI/AAAAAAAAiJc/UjvR-M2b9tY5SyKFkDY6Q_MbusEINRXkQ/w506-h750/Firebase_16-logo.png" src="https://lh3.googleusercontent.com/-whXBCDVxIto/Vz2Rsyz-UjI/AAAAAAAAiJc/UjvR-M2b9tY5SyKFkDY6Q_MbusEINRXkQ/w506-h750/Firebase_16-logo.png" style="width: 75px; height: 75px;" /></a>
+<p class="caption"><span class="caption-text">Firebase Logo</span></p>
+</div>
+<p>Das von Google bereitgestellte Firebase ist eine Sammlung verschiedener Dienste. Unter anderem darin enthalten sind</p>
+<ul class="simple">
+<li>Datenbank</li>
+<li>Benutzerverwaltung</li>
+<li>Analytics</li>
+<li>Storage</li>
+<li>Hosting</li>
+</ul>
+<p>Somit bildet Firebase das Rückgrad der Anwendung im Bereich der Daten und des Hostings. Bis zu einer bestimmten Nutzungsgrenze kann der Dienst kostenlos verwendet werden. Bei der Datenbank handelt es sich um eine Echtzeitdatenbank im No-SQl Format, die Daten werden als JSON Objekte erstellt.</p>
+<p>Firebase bietet über eine API die Möglichkeit Benutzer auf verschiedene Wege zu authentifizieren, beispielsweise über den Google Account, Facebook, Twitter oder Github. Auch können anonyme Anmeldungen erlaubt werden sowie die Eingabe eigener Benutzerdaten. Diese persönlichen Informationen werden nicht in der Datenbank abgelegt sondern sind entweder über die API oder das Firebase Backend erreichbar.</p>
+<p>Weiterhin bietet Firebase eine Vielzahl an Analyse und Konfigurationsmöglichkeiten. So lassen sich mit einfachsten mitteln Google Analytics einbinden um nachvollziehen zu können, wie populär die Anwendung ist und welche Bereich dabei besonders herausstechen. Ebenfalls vorhanden ist eine AdMob Einbindung um Webung anzuzeigen.</p>
+</div>
+<div class="section" id="vue">
+<h3>Vue<a class="headerlink" href="#vue" title="Permalink to this headline">¶</a></h3>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="https://vuejs.org/images/logo.png"><img alt="https://vuejs.org/images/logo.png" src="https://vuejs.org/images/logo.png" style="width: 75px; height: 75px;" /></a>
+<p class="caption"><span class="caption-text">VueJS Logo</span></p>
+</div>
+<p>Webseiten lassen sich nur über Javascript dynamisch verändern, entweder über natives JS oder mithilfe einer Libary wie JQuery. Für kleine Änderungen reicht es zumeist aus JQuery zu verwenden. Bei einer komplexen Anwendung wie dieser wäre man länger damit beschäftigt Funktionen zu schreiben um das HTML zu updaten als mit der eigentlichen Programmlogik. Gemäß dem Satz man solle das Rad nicht immer neu erfinden macht es an dieser Stelle sind ein Framework zu verwenden um das HTML zu verändern.</p>
+<p>Zwar ist die Einarbeitung in ein komplettes Framework sehr zeitintensiv, allerdings holt man oft während der Umsetzung die Zeit wieder rein da sich Funktionen wesentlich schneller umsetzten lassen.</p>
+<p>Vue ist ein Framework vergleichbar mit React von Facebook oder Angular von Google. Im Vergleich zu den beiden anderen ist Vue sehr innovativ und bietet die Möglichkeit eines schnellen Einstiegs.</p>
+<div class="section" id="components">
+<h4>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h4>
+<p>Der Aufbau von Vue erfolgt in <em>Components</em>, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar. In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden. Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem &#8216;Eltern&#8217; Element oder global mit beliebig anderen Komponeten Daten austauschen können.</p>
+<p>Alle Komponenten bestehen aus drei Teilen, einem <em>template</em>, einem <em>script</em> und einem <em>style</em>. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden. So lassen sich beispielsweise for-Schleifen oder if-Abfagen verwenden um bestimmte Elemente basierend auf Variablen die im <em>script</em> Teil der Komponente definiert wurden. Sobald sich der Inhalt einer Variable verändert, kümmert Vue sich im Hintergrund darum das Html neu zu rendern. Die Seite muss dabei nicht neu geladen werden.</p>
+<div class="figure" id="id7">
+<a class="reference internal image-reference" href="http://i.imgur.com/pHKxeyt.png"><img alt="http://i.imgur.com/pHKxeyt.png" src="http://i.imgur.com/pHKxeyt.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Ausschnitt einer Vue Datei</span></p>
+</div>
+</div>
+<div class="section" id="router">
+<h4>Router<a class="headerlink" href="#router" title="Permalink to this headline">¶</a></h4>
+<p>Eines der vielen Features die Vue mitbringt ist das <em>routing</em>, also das weiterleiten des Anwenders durch die Applikation. Die Besonderheit dabei ist, dass beim Aufruf der Webseite nur die index.html gesendet wird, es gibt somit keine Unterseiten die der Webserver verarbeiten könnte.</p>
+<div class="figure" id="id8">
+<a class="reference internal image-reference" href="http://i.imgur.com/H5KLVPZ.png"><img alt="http://i.imgur.com/H5KLVPZ.png" src="http://i.imgur.com/H5KLVPZ.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Angeben der Routen für Vue</span></p>
+</div>
+<p>Für das Routing in Vue sind zwei Angaben wichtig, der <strong>Pfad</strong> in Form der URL und die Angabe, welche <strong>Komponente</strong> für diesen Pfad gerendert werden soll.
+Wie oben zu sehen, gibt es vier Routen. Jeweils zwei für Lehrkräfte und zwei für Schüler, je nach dem was in der URL steht wird die entsprechend angegebene Komponente
+angezeigt. Wichtig ist, zu überprüfen ob ein Benutzer die jeweilige Seite aufrufen darf, oder ob eine Anmeldung erfolgen muss.</p>
+</div>
+<div class="section" id="store">
+<h4>Store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h4>
+<p>In Vue kann man die weiter oben beschrieben Komponenten in Komponenten laden. So kann die Startseite Text beinhalten und einen Login Button, der Button ist Teil einer
+anderen Komponente die den Anmeldevorgang übernimmt. Man hat eine <em>Parent - Child</em> Beziehung, dabei ist die Startseite die <em>Parent</em> Komponente und der Login Button hat die
+Rolle des <em>Child</em> Elements.</p>
+<p>Beide können über vorgegebene Wege miteinander kommunizieren, ein Elternelement übergibt <em>properties</em> an seine Kinder. Diese &#8216;lauschen&#8217; und sobald sich
+der Wert dieser Eigenschaft im Elternelement verändert übernehmen alle Kinder die neuen Werte.
+Die Child-Elemente können lediglich über <em>events</em> Daten an die übergeordnete Komponete senden, das Parent-Element muss dann das Event abfangen und bearbeiten.
+Manchmal kann es jedoch nötig sein Werte über mehrere Child-Element zu verteilen, beispielsweise den Benutzerstatus (eingeloggt oder nicht). Man müsste nun
+mindestens eine <em>propertie</em> an die Kinder-Elemente übergeben die den aktuellen Benutzer enthält, allerdings kann die Startseite den Wert nicht mehr verändern sobald
+sich der Benutzer angemeldet hat da eine Weiterleitung auf das Benutzerdashboard erfolgt in dem beispielsweise Fehlzeiten eingetragen werden können.</p>
+<div class="figure" id="id9">
+<a class="reference internal image-reference" href="https://vuejs.org/images/props-events.png"><img alt="https://vuejs.org/images/props-events.png" src="https://vuejs.org/images/props-events.png" style="width: 500px;" /></a>
+<p class="caption"><span class="caption-text">Parent-Child Kommunikation</span></p>
+</div>
+<p>Um diesem Problem entgegen zu wirken gibt es eine Erweiterung namens Vuex. Diese beinhaltet die <strong>Store</strong> Komponente welche einen globalen Eventbus zur Verfügung stellt auf dem
+Events übertragen und verarbeitet werden können. Die direkte Kommunikation fällt in diesem Fall weg, alle Änderungen an Daten werden dem Store Objekt bekannt gemacht und dieser ändert
+seine internen Werte. Alle Komponenten können auf diese Veränderung lauschen und innerhalb ihres eigenen Wirkbereiches Abläufe starten.</p>
+<p>Als kleines Beispiel dient die Anmeldung an einer Webanwendung, es gibt eine Startseite, einen Login Button und eine Seite die aufgerufen werden soll nachdem sich der Benutzer
+erfolgreich angemeldet hat. Klickt der Benutzer auf den Button, startet die &#8216;Login&#8217; Komponente eine interne Routine um zu prüfen ob sich der Benutzer anmelden darf oder nicht.
+Sollte der Login erfolgreich sein, meldet dies die Button Komponente an den Store und übergibt dabei ein Benutzerobjekt in dem der Name enthalten ist.
+Über einen Vue Router erfolgt die Weiterleitung zum Backend. Dort kann das Benutzerobjekt aus dem Vuex Store abgefragt werden und der Name wird auf der Webseite angezeigt.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Technologie.html" class="btn btn-neutral" title="Technologien" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Tobias Stosius.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'release',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
