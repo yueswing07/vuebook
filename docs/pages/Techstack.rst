@@ -75,33 +75,6 @@ Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien die einen Teil
 
 Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden.
 
-.. raw:: html
-
-    <embed>
-        <template>
-          <div class="wrapper container">
-            <div class="row">
-              <div class="col-md-12">
-                <h1>Noten Übersicht</h1>
-              </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-                <table class='gradestable'>
-                    <thead>
-                        <td v-for='subject in gradesObserv'>{{subject.name}}</td>
-                    </thead>
-                    <tbody>
-                        <td v-for='subject in gradesObserv' class='gradestable-body-item'>
-                            <span>Note {{subject.grade}}</span>
-                            <tr><input type="text" class='gradeInput' :ref='createRef(subject.name)' placeholder='Neu' @keyup='gradechange(subject.name)'></tr>
-                        </td>
-                    </tbody>
-                </table>
-            </div>
-          </div>
-        </div>
-      </template>
-    </embed>
-
+.. image:: http://i.imgur.com/pHKxeyt.png
+   :width: 500px
 
