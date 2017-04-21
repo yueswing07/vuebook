@@ -75,16 +75,17 @@ Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien die einen Teil
 
 Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden.
 
-.. highlight:: html
+.. raw:: html
 
-  <template>
-    <div class="wrapper container">
-        <div class="row">
-            <div class="col-md-12">
+    <embed>
+        <template>
+          <div class="wrapper container">
+            <div class="row">
+              <div class="col-md-12">
                 <h1>Noten Übersicht</h1>
-            </div>
-        </div>
-        <div class="row">
+              </div>
+          </div>
+          <div class="row">
             <div class="col-md-12">
                 <table class='gradestable'>
                     <thead>
@@ -98,8 +99,9 @@ Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und 
                     </tbody>
                 </table>
             </div>
+          </div>
         </div>
-    </div>
-</template>
+      </template>
+    </embed>
 
 
