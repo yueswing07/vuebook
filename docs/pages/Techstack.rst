@@ -76,8 +76,12 @@ Components
 
 Der Aufbau von Vue erfolgt in *Components*, einzelnen Vue Dateien die einen Teil des Programms abbilden. Beispielsweise stellt eine Komponente die Startseite dar. In dieser können beliebig viele weitere Komponenten eingebunden werden. Somit kann auf der Startseite ein Login, eine News-Feed etc. angezeigt werden. Jede dieser Komponenten bringt ihre eigene Logik mit die entweder für sich, mit dem 'Eltern' Element oder global mit beliebig anderen Komponeten Daten austauschen können.
 
-Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden.
+Alle Komponenten bestehen aus drei Teilen, einem *template*, einem *script* und einem *style*. Im Template Part werden Html Elemente eingetragen, der Html Code wird dabei mit Vue Elementen versehen um Logik abzubilden. So lassen sich beispielsweise for-Schleifen oder if-Abfagen verwenden um bestimmte Elemente basierend auf Variablen die im *script* Teil der Komponente definiert wurden. Sobald sich der Inhalt einer Variable verändert, kümmert Vue sich im Hintergrund darum das Html neu zu rendern. Die Seite muss dabei nicht neu geladen werden.
 
-.. image:: http://i.imgur.com/pHKxeyt.png
+.. figure:: http://i.imgur.com/pHKxeyt.png
    :width: 500px
+   
+   Ausschnitt einer Vue Datei
+ 
+ 
 
