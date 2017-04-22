@@ -125,7 +125,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#vue-startet">Vue startet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#eine-komponente-im-detail">Eine Komponente im Detail</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#virtueller-dom">Virtueller DOM</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#struktur">Struktur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#struktur">Struktur</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#template">Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script">Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#datenubergabe">Datenübergabe</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -275,6 +280,8 @@ wird dieses am Ende der Webseite angezeigt, muss jedes vorhergehende Element üb
 </div>
 <div class="section" id="struktur">
 <h3>Struktur<a class="headerlink" href="#struktur" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="template">
+<h4>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h4>
 <p>Wie unter <a class="reference internal" href="Techstack.html#my-reference-components"><span class="std std-ref">Components</span></a> beschrieben besteht eine Komponente aus drei Abschnitten, dem <em>template</em>, dem <em>script</em> und dem <em>style</em>.
 Im <strong>template</strong> werden neben normalen Html Elements spezielle Vue Anweisungen verwendet um Variablen anzuzeigen oder Schleifen zu durchlaufen.
 Anhand des Logins kann ein Teil der Funktionsweise einfach erklärt werden. Zunächst der Template Teil der <em>Welcome</em> Komponente. Diese wird, per Definition im Vue Router
@@ -298,6 +305,9 @@ Unterkomponenten haben die wiederung Unterkomponenten einbinden können. Innerha
 <a class="reference internal image-reference" href="http://imgur.com/f1m6Wg9.png"><img alt="http://imgur.com/f1m6Wg9.png" src="http://imgur.com/f1m6Wg9.png" style="width: 500px;" /></a>
 <p class="caption"><span class="caption-text">[4] Databinding</span></p>
 </div>
+</div>
+<div class="section" id="script">
+<h4>Script<a class="headerlink" href="#script" title="Permalink to this headline">¶</a></h4>
 <p>Nun ist die Variable &#8216;loginType&#8217; zwar in der <em>welcome.vue</em> definiert, allerdings kann die eingebundene <em>Login.vue</em> noch nichts mit diesem Wert anfangen. Ein so übergebener Wert
 muss erst in der Komponente bekannt gemacht werden.</p>
 <div class="code javascript highlight-default"><div class="highlight"><pre><span></span>export default {
@@ -324,8 +334,26 @@ muss erst in der Komponente bekannt gemacht werden.</p>
 <p>Im <em>script</em> Bereich einer Komponente werden Methoden definiert damit die Komponente Ihre zugedachte Aufgabe erfüllen kann. Ein Skript Bereich besteht aus mehreren Unterfunktionen.
 Der wichtigste Bereich der immer angegeben werden muss ist der <em>data()</em> Bereich, bzw. Die <em>data()</em> Methode. Um ein <em>binding</em> vorzunehmen muss die Variable des Eltern-Elements unter
 gleichem Namen im <em>props</em> Array angegeben werden. Innerhalb des <em>methods</em> Objekts werden alle Methoden aufgefürt die innerhalb der Komponente zur Verfügung stehen sollen. In diesem
-Fall gibt es eine Methode namens &#8216;login&#8217;. Diese wirde über ein Klick Event aufgerufen welches an einen Button angefügt wurde. An dieser Stelle wird zum ersten mal der Vuex Store
+Fall gibt es eine Methode namens &#8216;login&#8217;. Diese wirde über ein Klick Event aufgerufen welches an einen Button angefügt wurde.</p>
+<p>An dieser Stelle wird zum ersten mal der Vuex Store
 aufgerufen, dem Aufruf werden Informationen zum Provider und der Art des Logins übergeben. In diesem Fall wird der Wert aus dem Eltern-Element übergeben.</p>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="http://imgur.com/MDndnbZ.png"><img alt="http://imgur.com/MDndnbZ.png" src="http://imgur.com/MDndnbZ.png" style="width: 1000px;" /></a>
+<p class="caption"><span class="caption-text">[5] Benutzer meldet sich an</span></p>
+</div>
+</div>
+<div class="section" id="datenubergabe">
+<h4>Datenübergabe<a class="headerlink" href="#datenubergabe" title="Permalink to this headline">¶</a></h4>
+<p>In der <em>main.js</em> wurde zu Beginn ein Firebase Observer angelegt welcher den aktuellen Anmeldestatus eines Benutzers überprüft, ändert sich dieser bsp. von <code class="docutils literal"><span class="pre">null</span></code> zu einem Benutzer
+Objekt werden die angegebenen Methoden aufgerufen, in diesem Fall wird bei einem gültigen Benutzer der <code class="docutils literal"><span class="pre">loginType</span></code> angefragt und basierend auf dem Ergebnis wird ein Eintrag in der
+Datenbank geprüft, ob der Benutzer bereits registriert ist oder nicht. Sollte der Benutzer die Registrierung bereits abgeschlossen haben, wird er auf sein Schüler/Lehrer Dashboard
+weitergeleitet. Sollte er die Registreirung nicht abgeschlossen haben lädt zunächst ein Formular in dem Angaben zur Person gemacht werden müssen. Im Anschluss kann der Benutzer sein
+Dashboard aufrufen.</p>
+<div class="figure" id="id6">
+<img alt="http://imgur.com/V4azryy.png" src="http://imgur.com/V4azryy.png" />
+<p class="caption"><span class="caption-text">[6] Registrierung</span></p>
+</div>
+</div>
 </div>
 </div>
 </div>
