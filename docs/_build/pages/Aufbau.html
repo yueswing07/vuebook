@@ -117,14 +117,14 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Aufbau</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#initialisierung">initialisierung</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#initialisierung">Initialisierung</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#firebase">Firebase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#vue-komponenten">Vue Komponenten</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#vue-startet">Vue startet</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#eine-komponente-im-detail">Eine Komponente im Detail</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#virtueller-dom">Virtueller DOM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virtuelles-dom">Virtuelles DOM</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#struktur">Struktur</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#template">Template</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#script">Script</a></li>
@@ -133,6 +133,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#daten-verandern">Daten verändern</a></li>
 </ul>
 </li>
 </ul>
@@ -203,7 +204,7 @@
 <p>In den anderen Abschnitten wurden die Tools und Frameworks vorgestellt die verwendet wurden um die Webanwendung zu erstellen.
 Dieser Teil beschreibt nun den Aufbau der Anwendung, von der Struktur des Quellcodes bis zum deployment.</p>
 <div class="section" id="initialisierung">
-<h2>initialisierung<a class="headerlink" href="#initialisierung" title="Permalink to this headline">¶</a></h2>
+<h2>Initialisierung<a class="headerlink" href="#initialisierung" title="Permalink to this headline">¶</a></h2>
 <p>Die Anwendung nutzt den Firebase Dienst von Google um Daten zu speichern, Benutzer zu authentifizieren, zum Hosting und könnte zu einem späteren Zeitpunkt an die
 Analytics Schnittstelle angebunden werden um detaillierte Nutzungsinformationen zu sammeln.</p>
 <div class="section" id="firebase">
@@ -269,8 +270,8 @@ die zur URL aus dem Vue Router Objekt passt.</p>
 </div>
 <div class="section" id="eine-komponente-im-detail">
 <h2>Eine Komponente im Detail<a class="headerlink" href="#eine-komponente-im-detail" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="virtueller-dom">
-<h3>Virtueller DOM<a class="headerlink" href="#virtueller-dom" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="virtuelles-dom">
+<h3>Virtuelles DOM<a class="headerlink" href="#virtuelles-dom" title="Permalink to this headline">¶</a></h3>
 <p>Wurde Vue fehlerfrei initialisiert und für die aktuelle URL gibt es eine Komponente im Vue Router, wird diese geladen. Dazu erstellt Vue zunächst einen virtuellen DOM (Document Object Model)
 Vue arbeitet somit nicht direkt im Html und wählt Elemente beispielsweise über einen Klassen oder ID Selektor aus, sondern erstellt intern alle nötigen Elemente und bearbeitet sie
 auch intern. Erst wenn dieser Schritt fertig ist kümmert sich Vue um das Rendering.</p>
@@ -355,6 +356,9 @@ Dashboard aufrufen.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="daten-verandern">
+<h2>Daten verändern<a class="headerlink" href="#daten-verandern" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 

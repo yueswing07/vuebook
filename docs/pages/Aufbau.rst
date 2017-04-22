@@ -5,7 +5,7 @@ Aufbau
 In den anderen Abschnitten wurden die Tools und Frameworks vorgestellt die verwendet wurden um die Webanwendung zu erstellen.
 Dieser Teil beschreibt nun den Aufbau der Anwendung, von der Struktur des Quellcodes bis zum deployment.
 
-initialisierung
+Initialisierung
 ###############
 
 Die Anwendung nutzt den Firebase Dienst von Google um Daten zu speichern, Benutzer zu authentifizieren, zum Hosting und könnte zu einem späteren Zeitpunkt an die
@@ -89,7 +89,7 @@ die zur URL aus dem Vue Router Objekt passt.
 Eine Komponente im Detail
 #########################
 
-Virtueller DOM
+Virtuelles DOM
 --------------
 
 Wurde Vue fehlerfrei initialisiert und für die aktuelle URL gibt es eine Komponente im Vue Router, wird diese geladen. Dazu erstellt Vue zunächst einen virtuellen DOM (Document Object Model)
@@ -185,3 +185,7 @@ Dashboard aufrufen.
 .. figure:: http://imgur.com/V4azryy.png
 
     [6] Registrierung
+
+Daten verändern
+###############
+
